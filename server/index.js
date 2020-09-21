@@ -18,6 +18,52 @@ app.get('/api/health-check', (req, res, next) => {
     .then(result => res.json(result.rows[0]))
     .catch(err => next(err));
 });
+const userId = 5;
+
+app.get('/api/visits/:visitId', (req, res, next) => {
+  const visitId = parseFloat(req.params.visitId, 10);
+  if (!Number.isInteger(visitId) || visitId <= 0) {
+    return res.status(400).json({
+      error: 'visitId must be a positive integer'
+    });
+  }
+  const sql = `
+    select
+      "visits"."visitId",
+      "visits"."date",
+      "visits"."city",
+      "visits"."state",
+      json_object_agg("diseases"."name", "visitResults"."result") as "diseases"
+      from "visits"
+      join "users" using ("userId")
+      join "visitResults" using ("visitId")
+      join "diseases" using ("diseaseId")
+      where "userId" = $1 and "visitId" = $2
+      group by "visitId";
+  `;
+  const params = [userId, visitId];
+  db.query(sql, params)
+    .then(result => {
+      const resultObj = result.rows[0];
+      if (!resultObj) {
+        res.status(404).json({
+          error: `Cannot find visit with visitId ${visitId}`
+        });
+      } else {
+        const diseasesArr = Object.keys(resultObj.diseases).map(i => ({
+          [i]: resultObj.diseases[i]
+        }));
+        resultObj.diseases = diseasesArr;
+        res.json(resultObj);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
+});
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
