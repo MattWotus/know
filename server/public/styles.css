@@ -1,1 +1,14 @@
+#navbar {
+  height: 14vh;
+  background-color: rgb(255, 255, 255);
+}
 
+p {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.fa-plus-circle {
+  color: #F16A73;
+}
