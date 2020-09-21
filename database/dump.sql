@@ -160,7 +160,7 @@ CREATE TABLE public.partners (
     city text,
     state text,
     name text NOT NULL,
-    "createdAt" timestamp without time zone NOT NULL
+    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
 );
 
 
@@ -194,7 +194,7 @@ CREATE TABLE public.users (
     "lastName" text NOT NULL,
     email text NOT NULL,
     password text NOT NULL,
-    "createdAt" timestamp without time zone NOT NULL
+    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
 );
 
 
@@ -226,7 +226,7 @@ CREATE TABLE public."visitResults" (
     "visitId" integer NOT NULL,
     "diseaseId" integer NOT NULL,
     result boolean NOT NULL,
-    "createdAt" timestamp without time zone NOT NULL
+    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
 );
 
 
@@ -240,7 +240,7 @@ CREATE TABLE public.visits (
     date date NOT NULL,
     city text,
     state text,
-    "createdAt" timestamp without time zone NOT NULL
+    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
 );
 
 
@@ -304,6 +304,13 @@ ALTER TABLE ONLY public.visits ALTER COLUMN "visitId" SET DEFAULT nextval('publi
 --
 
 COPY public.diseases ("diseaseId", name, description) FROM stdin;
+1	chlamydia	Add later
+2	gonorrhea	Add later
+3	hepatitis	Add later
+4	herpes	Add later
+5	hiv	Add later
+6	hpv	Add later
+7	syphilis	Add later
 \.
 
 
@@ -359,7 +366,7 @@ COPY public.visits ("visitId", "userId", date, city, state, "createdAt") FROM st
 -- Name: diseases_diseaseId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."diseases_diseaseId_seq"', 1, false);
+SELECT pg_catalog.setval('public."diseases_diseaseId_seq"', 7, true);
 
 
 --
@@ -380,7 +387,7 @@ SELECT pg_catalog.setval('public."partners_partnerId_seq"', 1, false);
 -- Name: users_userId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."users_userId_seq"', 1, false);
+SELECT pg_catalog.setval('public."users_userId_seq"', 4, true);
 
 
 --
@@ -488,4 +495,3 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
-
