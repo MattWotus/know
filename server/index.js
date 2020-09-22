@@ -95,6 +95,114 @@ app.get('/api/visits/:visitId', (req, res, next) => {
     });
 });
 
+app.post('/api/visits', (req, res, next) => {
+  const body = req.body;
+  if (Object.keys(body).length === 0) {
+    res.status(400).json({
+      error: 'content is a required field'
+    });
+  } else if (!('date' in body) || (body.date === '') || !('city' in body) || !('state' in body) || !('diseases' in body)) {
+    res.status(400).json({
+      error: 'content expected: date=date, city=text or "" or null, state=text or "" or null, diseases=[{}] with at least one disease obj'
+    });
+  } else if (!Array.isArray(body.diseases)) {
+    res.status(400).json({
+      error: 'diseases=[{}] with at least one disease obj'
+    });
+  }
+  for (let i = 0; i < body.diseases.length; i++) {
+    for (const prop in body.diseases[i]) {
+      if (body.diseases[i][prop] === 'N/A') {
+        body.diseases.splice(i, 1);
+      }
+    }
+  }
+  let valuesConcat = '';
+  for (let i = 0; i < body.diseases.length; i++) {
+    const diseaseName = Object.keys(body.diseases[i]).map(obj => [obj]);
+    let result = '';
+    switch (body.diseases[i][diseaseName]) {
+      case 'Positive':
+        result = true;
+        break;
+      case 'Negative':
+        result = false;
+        break;
+    }
+    let diseaseId = '';
+    switch (diseaseName[0][0]) {
+      case 'chlamydia':
+        diseaseId = 1;
+        break;
+      case 'gonorrhea':
+        diseaseId = 2;
+        break;
+      case 'hepatitis':
+        diseaseId = 3;
+        break;
+      case 'herpes':
+        diseaseId = 4;
+        break;
+      case 'hiv':
+        diseaseId = 5;
+        break;
+      case 'hpv':
+        diseaseId = 6;
+        break;
+      case 'syphilis':
+        diseaseId = 7;
+        break;
+    }
+    valuesConcat += `((select "visitId" from add_visit), ${diseaseId}, ${result}), `;
+  }
+  const values = valuesConcat.slice(0, -2);
+  const sql = `
+    with add_visit as (
+      insert into "visits" ("userId", "date", "city", "state")
+      values ($1, $2, $3, $4)
+      returning "visitId"
+    )
+    insert into "visitResults" ("visitId", "diseaseId", "result")
+    values ${values}
+    returning *;
+  `;
+  const params = [userId, body.date, body.city, body.state];
+  db.query(sql, params)
+    .then(result => {
+      const visitId = result.rows[0].visitId;
+      const sql = `
+      select
+        "visits"."visitId",
+        "visits"."date",
+        "visits"."city",
+        "visits"."state",
+        json_object_agg("diseases"."name", "visitResults"."result") as "diseases"
+        from "visits"
+        join "users" using ("userId")
+        join "visitResults" using ("visitId")
+        join "diseases" using ("diseaseId")
+        where "userId" = $1 and "visitId" = $2
+        group by "visitId";
+      `;
+      const params = [userId, visitId];
+      db.query(sql, params)
+        .then(result => {
+          const resultObj = result.rows[0];
+          const diseasesArr = Object.keys(resultObj.diseases).map(i => ({
+            [i]: resultObj.diseases[i]
+          }));
+          resultObj.diseases = diseasesArr;
+          res.status(201).json(resultObj);
+        });
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
+});
+
 app.delete('/api/visits/:visitId', (req, res, next) => {
   const visitId = parseFloat(req.params.visitId);
   if (!Number.isInteger(visitId) || visitId <= 0) {
