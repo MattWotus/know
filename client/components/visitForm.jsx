@@ -7,7 +7,6 @@ class VisitForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.state = {
-      visits: [],
       city: '',
       date: '',
       diseases: [
@@ -60,6 +59,7 @@ class VisitForm extends React.Component {
       ],
       state: ''
     });
+    document.getElementById('visitForm').reset();
   }
 
   handleReset() {
@@ -77,6 +77,7 @@ class VisitForm extends React.Component {
       ],
       state: ''
     });
+    document.getElementById('visitForm').reset();
   }
 
   render() {
@@ -98,13 +99,13 @@ class VisitForm extends React.Component {
       color: 'rgb(255, 255, 255'
     };
     const dateWidth = {
-      maxWidth: '50vw'
+      maxWidth: '60vw'
     };
     const cityWidth = {
-      maxWidth: '30vw'
+      maxWidth: '35vw'
     };
     const stateWidth = {
-      maxWidth: '20vw'
+      maxWidth: '25vw'
     };
     const resultWidth = {
       maxWidth: '30vw'
@@ -112,12 +113,12 @@ class VisitForm extends React.Component {
     return (
       <div className="container-fluid">
         <div className="row">
-          <form onSubmit={this.handleSubmit} onReset={this.handleReset} className="col-12">
+          <form id="visitForm" onSubmit={this.handleSubmit} onReset={this.handleReset} className="col-12">
             <div className="row" style={header}>
               <div className="col-12 d-flex justify-content-between align-items-center">
-                <button type="submit" className="btn"><h6 className="whiteColor mt-1 mb-0">Cancel</h6></button>
+                <button type="reset" className="btn"><h6 className="whiteColor mt-1 mb-0">Cancel</h6></button>
                 <h4 className="mb-0">New Test</h4>
-                <button type="reset" className="btn"><h6 className="whiteColor mt-1 mb-0">Add</h6></button>
+                <button type="submit" className="btn"><h6 className="whiteColor mt-1 mb-0">Add</h6></button>
               </div>
             </div>
             <div className="input-group d-flex align-items-center justify-content-between border-bottom mt-3 pb-3">
@@ -128,8 +129,8 @@ class VisitForm extends React.Component {
             <div className="input-group d-flex align-items-center justify-content-between border-bottom pt-3 pb-3">
               <label htmlFor="location" className="mb-0"><h5 className="mb-0">Location</h5></label>
               <div className="d-flex">
-                <input type="text" id="location" className="form-control mr-3" name="location" placeholder="City" style={cityWidth} value={city} onChange={this.handleChange} />
-                <select id="location" className="form-control" name="location" aria-label="location"
+                <input type="text" id="location" className="form-control mr-2" name="city" placeholder="City" style={cityWidth} value={city} onChange={this.handleChange} />
+                <select className="form-control" name="state" aria-label="location"
                   aria-describedby="basic-addon1" style={stateWidth} value={state} onChange={this.handleChange}>
                   <option defaultValue>State</option>
                   <option>AL</option>
@@ -185,7 +186,7 @@ class VisitForm extends React.Component {
                 </select>
               </div>
             </div>
-            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3">
+            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-2">
               <label htmlFor="chlamydia" className="mb-0"><h5 className="mb-0">Chlamydia</h5></label>
               <select id="chlamydia" className="form-control" name="chlamydia" aria-label="location"
                 aria-describedby="basic-addon1" style={resultWidth} value={diseases.chlamydia} onChange={this.handleChange}>
@@ -195,7 +196,7 @@ class VisitForm extends React.Component {
                 <option>N/A</option>
               </select>
             </div>
-            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3">
+            <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="gonorrhea" className="mb-0"><h5 className="mb-0">Gonorrhea</h5></label>
               <select id="gonorrhea" className="form-control" name="gonorrhea" aria-label="location"
                 aria-describedby="basic-addon1" style={resultWidth} value={diseases.gonorrhea} onChange={this.handleChange}>
@@ -205,7 +206,7 @@ class VisitForm extends React.Component {
                 <option>N/A</option>
               </select>
             </div>
-            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3">
+            <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="hepatitis" className="mb-0"><h5 className="mb-0">Hepatitis</h5></label>
               <select id="hepatitis" className="form-control" name="hepatitis" aria-label="location"
                 aria-describedby="basic-addon1" style={resultWidth} value={diseases.hepatitis} onChange={this.handleChange}>
@@ -215,7 +216,7 @@ class VisitForm extends React.Component {
                 <option>N/A</option>
               </select>
             </div>
-            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3">
+            <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="herpes" className="mb-0"><h5 className="mb-0">Herpes</h5></label>
               <select id="herpes" className="form-control" name="herpes" aria-label="location"
                 aria-describedby="basic-addon1" style={resultWidth} value={diseases.herpes} onChange={this.handleChange}>
@@ -225,9 +226,9 @@ class VisitForm extends React.Component {
                 <option>N/A</option>
               </select>
             </div>
-            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3">
+            <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="HIV" className="mb-0"><h5 className="mb-0">HIV</h5></label>
-              <select id="HIV" className="form-control" name="HIV" aria-label="location"
+              <select id="HIV" className="form-control" name="hiv" aria-label="location"
                 aria-describedby="basic-addon1" style={resultWidth} value={diseases.hiv} onChange={this.handleChange}>
                 <option defaultValue>Result</option>
                 <option>Positive</option>
@@ -235,9 +236,9 @@ class VisitForm extends React.Component {
                 <option>N/A</option>
               </select>
             </div>
-            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3">
+            <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="HPV" className="mb-0"><h5 className="mb-0">HPV</h5></label>
-              <select id="HPV" className="form-control" name="HPV" aria-label="location"
+              <select id="HPV" className="form-control" name="hpv" aria-label="location"
                 aria-describedby="basic-addon1" style={resultWidth} value={diseases.hpv} onChange={this.handleChange}>
                 <option defaultValue>Result</option>
                 <option>Positive</option>
@@ -245,7 +246,7 @@ class VisitForm extends React.Component {
                 <option>N/A</option>
               </select>
             </div>
-            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3">
+            <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="syphilis" className="mb-0"><h5 className="mb-0">Syphilis</h5></label>
               <select id="syphilis" className="form-control" name="syphilis" aria-label="location"
                 aria-describedby="basic-addon1" style={resultWidth} value={diseases.syphilis} onChange={this.handleChange}>
