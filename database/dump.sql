@@ -366,13 +366,20 @@ COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM st
 3	5	t	2020-09-21 21:37:18.489142-04
 3	7	t	2020-09-21 21:37:18.489142-04
 3	7	t	2020-09-21 21:37:18.489142-04
-4	1	t	2020-09-21 21:38:53.062409-04
-4	2	t	2020-09-21 21:38:53.062409-04
-4	3	t	2020-09-21 21:38:53.062409-04
-4	4	t	2020-09-21 21:38:53.062409-04
-4	5	t	2020-09-21 21:38:53.062409-04
-4	7	t	2020-09-21 21:38:53.062409-04
-4	7	t	2020-09-21 21:38:53.062409-04
+5	1	f	2020-09-21 22:10:52.302461-04
+5	2	f	2020-09-21 22:10:52.302461-04
+5	3	f	2020-09-21 22:10:52.302461-04
+5	4	f	2020-09-21 22:10:52.302461-04
+5	5	f	2020-09-21 22:10:52.302461-04
+5	6	f	2020-09-21 22:10:52.302461-04
+5	7	f	2020-09-21 22:10:52.302461-04
+6	1	t	2020-09-21 22:11:18.510454-04
+6	2	f	2020-09-21 22:11:18.510454-04
+6	3	f	2020-09-21 22:11:18.510454-04
+6	4	f	2020-09-21 22:11:18.510454-04
+6	5	f	2020-09-21 22:11:18.510454-04
+6	6	f	2020-09-21 22:11:18.510454-04
+6	7	f	2020-09-21 22:11:18.510454-04
 \.
 
 
@@ -383,7 +390,8 @@ COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM st
 COPY public.visits ("visitId", "userId", date, city, state, "createdAt") FROM stdin;
 2	5	2020-09-21	Chicago	IL	2020-09-21 21:13:01.835279-04
 3	5	2020-10-02	New York	NY	2020-09-21 21:34:33.38375-04
-4	6	2020-10-02	Irvine	CA	2020-09-21 21:38:29.718889-04
+5	6	2020-10-02	Irvine	CA	2020-09-21 22:09:01.438731-04
+6	6	2020-10-10	San Diego	CA	2020-09-21 22:09:19.564916-04
 \.
 
 
@@ -419,7 +427,7 @@ SELECT pg_catalog.setval('public."users_userId_seq"', 6, true);
 -- Name: visits_visitId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."visits_visitId_seq"', 4, true);
+SELECT pg_catalog.setval('public."visits_visitId_seq"', 6, true);
 
 
 --
@@ -520,3 +528,4 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
+
