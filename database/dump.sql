@@ -499,7 +499,7 @@ ALTER TABLE ONLY public."visitResults"
 --
 
 ALTER TABLE ONLY public."visitResults"
-    ADD CONSTRAINT "visitResults_fk1" FOREIGN KEY ("diseaseId") REFERENCES public.diseases("diseaseId");
+    ADD CONSTRAINT "visitResults_fk1" FOREIGN KEY ("diseaseId") REFERENCES public.diseases("diseaseId") ON DELETE CASCADE;
 
 
 --
