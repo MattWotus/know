@@ -235,7 +235,7 @@ CREATE TABLE public."visitResults" (
 --
 
 CREATE TABLE public.visits (
-    "visitId" integer NOT NULL REFERENCES visitResults ON DELETE CASCADE,
+    "visitId" integer NOT NULL,
     "userId" integer NOT NULL,
     date date NOT NULL,
     city text,
@@ -343,6 +343,8 @@ COPY public.partners ("partnerId", "userId", date, city, state, name, "createdAt
 --
 
 COPY public.users ("userId", "firstName", "lastName", email, password, "createdAt") FROM stdin;
+5	Scott	Brett	scott@brett.com	password	2020-09-21 21:12:58.066098-04
+6	Matt	Ethan	tyler@devin.com	password	2020-09-21 21:33:44.681456-04
 \.
 
 
@@ -351,6 +353,26 @@ COPY public.users ("userId", "firstName", "lastName", email, password, "createdA
 --
 
 COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM stdin;
+2	1	f	2020-09-21 21:36:21.22245-04
+2	2	f	2020-09-21 21:36:21.22245-04
+2	3	f	2020-09-21 21:36:21.22245-04
+2	4	t	2020-09-21 21:36:21.22245-04
+2	5	f	2020-09-21 21:36:21.22245-04
+2	7	f	2020-09-21 21:36:21.22245-04
+3	1	t	2020-09-21 21:37:18.489142-04
+3	2	t	2020-09-21 21:37:18.489142-04
+3	3	t	2020-09-21 21:37:18.489142-04
+3	4	t	2020-09-21 21:37:18.489142-04
+3	5	t	2020-09-21 21:37:18.489142-04
+3	7	t	2020-09-21 21:37:18.489142-04
+3	7	t	2020-09-21 21:37:18.489142-04
+4	1	t	2020-09-21 21:38:53.062409-04
+4	2	t	2020-09-21 21:38:53.062409-04
+4	3	t	2020-09-21 21:38:53.062409-04
+4	4	t	2020-09-21 21:38:53.062409-04
+4	5	t	2020-09-21 21:38:53.062409-04
+4	7	t	2020-09-21 21:38:53.062409-04
+4	7	t	2020-09-21 21:38:53.062409-04
 \.
 
 
@@ -359,6 +381,9 @@ COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM st
 --
 
 COPY public.visits ("visitId", "userId", date, city, state, "createdAt") FROM stdin;
+2	5	2020-09-21	Chicago	IL	2020-09-21 21:13:01.835279-04
+3	5	2020-10-02	New York	NY	2020-09-21 21:34:33.38375-04
+4	6	2020-10-02	Irvine	CA	2020-09-21 21:38:29.718889-04
 \.
 
 
@@ -387,14 +412,14 @@ SELECT pg_catalog.setval('public."partners_partnerId_seq"', 1, false);
 -- Name: users_userId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."users_userId_seq"', 4, true);
+SELECT pg_catalog.setval('public."users_userId_seq"', 6, true);
 
 
 --
 -- Name: visits_visitId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."visits_visitId_seq"', 1, false);
+SELECT pg_catalog.setval('public."visits_visitId_seq"', 4, true);
 
 
 --
@@ -495,3 +520,4 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
+
