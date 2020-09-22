@@ -235,7 +235,7 @@ CREATE TABLE public."visitResults" (
 --
 
 CREATE TABLE public.visits (
-    "visitId" integer NOT NULL,
+    "visitId" integer NOT NULL REFERENCES visitResults ON DELETE CASCADE,
     "userId" integer NOT NULL,
     date date NOT NULL,
     city text,
@@ -520,4 +520,3 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
-
