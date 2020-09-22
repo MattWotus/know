@@ -6,8 +6,9 @@ function SingleVisit() {
   return (
     <div className="container-fluid">
       <div className='row'>
-        <div className='col-12 d-flex justify-content-center mt-4'>
-
+        <div className='col-12 d-flex justify-content-between align-items-center mt-4'>
+          <div className="blueColor">&lt; Back</div>
+          <div><i className="fas fa-ellipsis-h fa-3x"></i></div>
         </div>
       </div>
       <div className='row d-flex justify-content-center'>

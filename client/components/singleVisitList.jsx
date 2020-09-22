@@ -4,7 +4,7 @@ import SingleVisitListItem from './singleVisitListItem';
 class SingleVisitList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { test: [] };
+    this.state = { data: [], tests: [] };
     this.getSingleVisit = this.getSingleVisit.bind(this);
   }
 
@@ -13,51 +13,48 @@ class SingleVisitList extends React.Component {
   }
 
   getSingleVisit() {
-    const fakeTestData = [
-
-      {
-        test: 'test',
-        result: 'result'
-      },
-      {
-        test: 'test',
-        result: 'result'
-      },
-      {
-        test: 'test',
-        result: 'result'
-      },
-      {
-        test: 'test',
-        result: 'result'
-      },
-      {
-        test: 'test',
-        result: 'result'
-      },
-      {
-        test: 'test',
-        result: 'result'
-      }
-    ];
-    this.setState({ tests: fakeTestData });
+    const fakeTestData = {
+      city: 'Chicago',
+      date: '2020-09-21T04:00:00.000Z',
+      diseases: [
+        {
+          chlamydia: 'Negative'
+        },
+        {
+          gonorrhea: 'Negative'
+        },
+        {
+          hepatitis: 'Negative'
+        },
+        {
+          herpes: 'Negative'
+        },
+        {
+          hiv: 'Negative'
+        },
+        {
+          syphilis: 'Negative'
+        }
+      ],
+      state: 'IL',
+      visitId: 1
+    };
+    this.setState({ tests: fakeTestData.diseases });
   }
 
   render() {
-    if (this.state.test.length === 0) {
-      return <h3>No tests recorded</h3>;
-    } else {
-      return (
-        this.state.test.map(test => {
-          return (
-            <SingleVisitListItem
-              key={test.visitId}
-              id={test.visitId}
-              date={test.date} />
-          );
-        })
-      );
-    }
+    return (
+      this.state.tests.map(test => {
+        const propName = Object.keys(test).map(prop => [prop]);
+        return (
+          <SingleVisitListItem
+            key={propName}
+            id={test.visitId}
+            test={propName}
+            result={test[propName]} />
+        );
+      })
+    );
   }
 }
 
