@@ -4,7 +4,7 @@ import SingleVisitListItem from './singleVisitListItem';
 class SingleVisitList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { data: [], tests: [] };
+    this.state = { tests: [] };
     this.getSingleVisit = this.getSingleVisit.bind(this);
   }
 
