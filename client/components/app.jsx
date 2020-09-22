@@ -1,5 +1,6 @@
 import React from 'react';
-import Visits from './visits';
+import Welcome from './welcome';
+// import Visits from './visits';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Visits />
+      <Welcome />
     );
   }
 }
