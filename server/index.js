@@ -20,6 +20,36 @@ app.get('/api/health-check', (req, res, next) => {
 });
 const userId = 5;
 
+app.get('/api/visits', (req, res, next) => {
+  const sql = `
+    select
+      "visits"."visitId",
+      "visits"."date",
+      "visits"."city",
+      "visits"."state",
+      json_object_agg("diseases"."name", "visitResults"."result") as "diseases"
+      from "visits"
+      join "users" using ("userId")
+      join "visitResults" using ("visitId")
+      join "diseases" using ("diseaseId")
+      where "userId" = $1
+      group by "visitId";
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      const visits = result.rows;
+      visits.forEach(visit => {
+        const diseasesArr = Object.keys(visit.diseases).map(i => ({
+          [i]: visit.diseases[i]
+        }));
+        visit.diseases = diseasesArr;
+      });
+      res.json(visits);
+    })
+    .catch(err => next(err));
+});
+
 app.get('/api/visits/:visitId', (req, res, next) => {
   const visitId = parseFloat(req.params.visitId, 10);
   if (!Number.isInteger(visitId) || visitId <= 0) {
