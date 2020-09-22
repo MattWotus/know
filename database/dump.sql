@@ -235,7 +235,7 @@ CREATE TABLE public."visitResults" (
 --
 
 CREATE TABLE public.visits (
-    "visitId" integer NOT NULL REFERENCES visitResults ON DELETE CASCADE,
+    "visitId" integer NOT NULL,
     "userId" integer NOT NULL,
     date date NOT NULL,
     city text,
@@ -499,7 +499,7 @@ ALTER TABLE ONLY public."visitResults"
 --
 
 ALTER TABLE ONLY public."visitResults"
-    ADD CONSTRAINT "visitResults_fk1" FOREIGN KEY ("diseaseId") REFERENCES public.diseases("diseaseId") ON DELETE CASCADE;
+    ADD CONSTRAINT "visitResults_fk1" FOREIGN KEY ("diseaseId") REFERENCES public.diseases("diseaseId");
 
 
 --
