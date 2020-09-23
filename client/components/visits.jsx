@@ -18,7 +18,7 @@ function Visits(props) {
       </div>
       <div className='row'>
         <div className='col-12'>
-          <Navbar />
+          <Navbar setView={props.setView} />
         </div>
       </div>
     </div>

@@ -55,7 +55,7 @@ class SingleVisit extends React.Component {
         </div>
         <div className='row'>
           <div className='col-12'>
-            <Navbar />
+            <Navbar setView={this.props.setView} />
           </div>
         </div>
         {deleteModal}

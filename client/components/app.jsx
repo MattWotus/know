@@ -4,6 +4,7 @@ import Login from './login';
 import Visits from './visits';
 // import VisitForm from './visitForm';
 import SingleVisit from './singleVisit';
+import Settings from './settings';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -53,6 +54,10 @@ export default class App extends React.Component {
     } else if (this.state.view === 'singleVisit') {
       return (
         <SingleVisit visitId={this.state.visitId} setView={this.setView} />
+      );
+    } else if (this.state.view === 'settings') {
+      return (
+        <Settings setView={this.setView} />
       );
     }
   }
