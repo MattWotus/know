@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeLogo from './homeLogo';
 
-function Welcome() {
+function Welcome(props) {
   return (
     <div className="container-fluid d-flex flex-column justify-content-center">
       <div className="row mb-5">
@@ -17,7 +17,7 @@ function Welcome() {
           <button type="button" id="getStarted" className="btn"><h5 className="mb-0">Get Started</h5></button>
         </div>
         <div className="col-11">
-          <button type="button" id="haveAccount" className="btn"><h5 className="mb-0">I Have An Account</h5></button>
+          <button onClick={() => props.setView('login')} type="button" id="haveAccount" className="btn"><h5 className="mb-0">I Have An Account</h5></button>
         </div>
       </div>
     </div>
