@@ -230,7 +230,7 @@ app.post('/api/visits', (req, res, next) => {
     });
 });
 
-app.use(require('./public/routes/delete'));
+app.use(require('./routes/delete'));
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
