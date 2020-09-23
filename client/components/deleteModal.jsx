@@ -2,8 +2,8 @@ import React from 'react';
 
 function DeleteModal(props) {
   return (
-    <div className="modalOverlay">
-      <div className="modalContent">
+    <div className="deleteModalOverlay">
+      <div className="deleteModalContent">
         <p>Do you want to delete this visit?</p>
         <div className="buttons d-flex justify-content-around">
           <button onClick={props.deleteVisit} id="deleteYes">
