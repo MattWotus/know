@@ -10,7 +10,7 @@ function VisitListItem(props) {
   const month = monthNames[newDate.getUTCMonth()];
   const formattedDate = month + ' ' + day + ',' + ' ' + year;
   return (
-    <div className='visit d-flex justify-content-between align-items-center mt-4 mb-4'>
+    <div onClick={() => props.selectVisit(props.id)} className='visit d-flex justify-content-between align-items-center mt-4 mb-4'>
       <div>
         {formattedDate}
       </div>

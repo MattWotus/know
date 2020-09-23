@@ -75,6 +75,7 @@ h2 {
   border: 1px solid black;
   border-radius: 25px;
   box-shadow: 2px 2px 8px #888888;
+  cursor: pointer;
 }
 
 .blueColor {
