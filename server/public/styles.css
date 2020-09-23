@@ -1,6 +1,5 @@
 body {
   height: 100vh;
-  overflow-y: scroll;
   font-family: 'Raleway',
     sans-serif;
   background-color: #F8F8F8;
@@ -65,7 +64,8 @@ h3 {
 }
 
 .fa-plus-circle,
-.fa-ellipsis-h {
+.fa-ellipsis-h,
+.fa-minus-circle {
   color: #F16A73;
 }
 
@@ -133,7 +133,12 @@ h3 {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.backButton, .results-button, .partners-nav, add-nav, get-tested-nav, settings-nav {
+.backButton,
+.results-button,
+.partners-nav,
+add-nav,
+get-tested-nav,
+settings-nav {
   cursor: pointer;
 }
 
@@ -142,7 +147,7 @@ h3 {
   top: 0;
 }
 
-.modalOverlay {
+.deleteModalOverlay {
   width: 100%;
   height: 100vh;
   position: fixed;
@@ -152,7 +157,7 @@ h3 {
   align-items: center;
 }
 
-.modalContent {
+.deleteModalContent {
   width: 60%;
   height: 30%;
   display: flex;
@@ -165,15 +170,52 @@ h3 {
 }
 
 .buttons {
-  width: 60%;
+  width: 100%;
+  height: 100%;
 }
 
 .visit-ellipsis {
   cursor: pointer;
 }
 
-#deleteYes, #deleteNo {
+#deleteYes,
+#deleteNo {
   width: 40%;
   background-color: #62B3F5;
   color: white;
+}
+
+.addModalOverlay {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(248, 248, 248, 0.85);
+  z-index: 5000;
+}
+
+.addModalContent {
+  position: absolute;
+  bottom: 0;
+  width: 60%;
+  height: 35%;
+  margin-bottom: 3vh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#newTest,
+#newPartner {
+  width: 75%;
+  height: 25%;
+  background-color: #62B3F5;
+  color: white;
+  border: none;
+  border-radius: 20px;
+
 }
