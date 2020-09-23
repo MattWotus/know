@@ -3,7 +3,7 @@ import InnerLogo from './innerLogo';
 import Navbar from './navbar';
 import VisitList from './visitList';
 
-function Visits() {
+function Visits(props) {
   return (
     <div className="container-fluid">
       <div className='row'>
@@ -13,7 +13,7 @@ function Visits() {
       </div>
       <div className='row d-flex justify-content-center'>
         <div className='col-11'>
-          <VisitList />
+          <VisitList selectVisit={props.selectVisit} />
         </div>
       </div>
       <div className='row'>
