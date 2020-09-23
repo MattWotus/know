@@ -1,6 +1,8 @@
 import React from 'react';
+// import { ProgressPlugin } from 'webpack';
 import Navbar from './navbar';
-function Settings() {
+
+function Settings(props) {
   return (
     <div className="visit d-flex justify-content-between align-items-center mt-4 mb-4">
       <div className="col-11">
@@ -23,7 +25,7 @@ function Settings() {
       </div>
       <div className='row'>
         <div className='col-12'>
-          <Navbar />
+          <Navbar setView={props.setView} />
         </div>
       </div>
     </div>

@@ -117,7 +117,7 @@ h3 {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.backButton {
+.backButton, .results-button, .partners-nav, add-nav, get-tested-nav, settings-nav {
   cursor: pointer;
 }
 
