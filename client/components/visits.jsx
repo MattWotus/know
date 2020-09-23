@@ -5,6 +5,10 @@ import VisitList from './visitList';
 import AddModal from './addModal';
 
 function Visits(props) {
+  let addModal = null;
+  if (props.addModal) {
+    addModal = <AddModal addModalToggle={props.addModalToggle} setView={props.setView} />;
+  }
   return (
     <div className="container">
       <div className='row'>
@@ -19,10 +23,10 @@ function Visits(props) {
       </div>
       <div className='row'>
         <div className='col-12'>
-          <Navbar setView={props.setView} />
+          <Navbar addModalToggle={props.addModalToggle} setView={props.setView} />
         </div>
       </div>
-      <AddModal />
+      {addModal}
     </div>
   );
 }
