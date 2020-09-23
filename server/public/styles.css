@@ -54,6 +54,10 @@ body {
   margin-bottom: 0;
 }
 
+#navbar i {
+  cursor: pointer;
+}
+
 h1,
 h2,
 h3 {
