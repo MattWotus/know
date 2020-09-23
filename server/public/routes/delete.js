@@ -1,8 +1,8 @@
 let express = require('express'),
-path = require('path'),
-fs = require('fs'),
+  path = require('path'),
+  fs = require('fs'),
 
-app = module.exports = express();
+  app = module.exports = express();
 
 const db = require('../../database');
 
@@ -26,7 +26,7 @@ app.delete('/api/visits/:visitId', (req, res, next) => {
           error: `Cannot find visit with visitId ${visitId}`
         });
       } else {
-        res.sendStatus(204)
+        res.sendStatus(204);
       }
     })
     .catch(err => {
