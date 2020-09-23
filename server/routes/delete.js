@@ -1,8 +1,8 @@
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
+let express = require('express'),
+  path = require('path'),
+  fs = require('fs'),
 
-const app = module.exports = express();
+  app = module.exports = express();
 
 const db = require('../database');
 
