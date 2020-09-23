@@ -3,7 +3,7 @@ import InnerLogo from './innerLogo';
 
 function Login(props) {
   return (
-    <div className="container-fluid pt-5">
+    <div className="container-fluid pt-5 whiteBackground">
       <div className="row mt-5 mb-5">
         <div className="col-12 d-flex justify-content-center">
           <InnerLogo />
