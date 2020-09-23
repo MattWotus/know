@@ -12,6 +12,7 @@ class SingleVisit extends React.Component {
       deleteModal: false
     };
     this.deleteModalToggle = this.deleteModalToggle.bind(this);
+    this.deleteVisit = this.deleteVisit.bind(this);
   }
 
   componentDidMount() {
@@ -24,10 +25,19 @@ class SingleVisit extends React.Component {
     this.setState({ deleteModal: !this.state.deleteModal });
   }
 
+  deleteVisit() {
+    this.deleteModalToggle();
+    fetch(`/api/visits/${this.props.visitId}`, {
+      method: 'DELETE'
+    });
+    this.setState({ visit: {} });
+    this.props.setView('visits');
+  }
+
   render() {
     let deleteModal = null;
     if (this.state.deleteModal) {
-      deleteModal = <DeleteModal deleteModalToggle={this.deleteModalToggle} />;
+      deleteModal = <DeleteModal deleteVisit={this.deleteVisit} deleteModalToggle={this.deleteModalToggle} />;
     }
     return (
       <div className="container-fluid mb-5">

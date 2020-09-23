@@ -6,7 +6,7 @@ function DeleteModal(props) {
       <div className="modalContent">
         <p>Do you want to delete this visit?</p>
         <div className="buttons d-flex justify-content-around">
-          <button id="deleteYes">
+          <button onClick={props.deleteVisit} id="deleteYes">
             Yes
           </button>
           <button onClick={props.deleteModalToggle} id="deleteNo">
