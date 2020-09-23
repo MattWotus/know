@@ -5,7 +5,7 @@ import VisitList from './visitList';
 
 function Visits() {
   return (
-    <div className="container-fluid mb-5">
+    <div className="container-fluid">
       <div className='row'>
         <div className='col-12 d-flex justify-content-center mt-4'>
           <InnerLogo />

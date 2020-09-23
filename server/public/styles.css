@@ -1,6 +1,8 @@
 body {
   height: 100vh;
   overflow-y: scroll;
+  font-family: 'Raleway',
+  sans-serif;
 }
 
 #root {
@@ -21,7 +23,8 @@ body {
   bottom: 0;
 }
 
-#getStarted {
+#getStarted,
+#login {
   width: 100%;
   height: 6vh;
   background-color: #62B3F5;
@@ -42,13 +45,16 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-p {
+#navbar p {
+  font-family: 'Rock Salt',
+  cursive;
   font-size: 12px;
   margin-top: 5px;
   margin-bottom: 0;
 }
 
-h1 {
+h1,
+h2 {
   font-weight: normal;
 }
 
@@ -56,8 +62,6 @@ h1 {
 .fa-ellipsis-h {
   color: #F16A73;
 }
-
-
 
 #innerLogo {
   max-width: 80%;
@@ -83,4 +87,12 @@ h1 {
 
 .backFontSize {
   font-size: 20px;
+}
+
+#email, #password {
+  background-color: #E5E5E5;
+}
+
+#passwordHelp p {
+  color: rgba(0, 0, 0, 0.5);
 }
