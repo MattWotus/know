@@ -11,7 +11,13 @@ export default class App extends React.Component {
   }
 
   addVisit(newVisit) {
-
+    fetch('/api/visits', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newVisit)
+    });
   }
 
   render() {
