@@ -5,13 +5,13 @@ function AddModal(props) {
     <div className="addModalOverlay">
       <div className="addModalContent">
         <div className="buttons d-flex flex-column justify-content-around align-items-center">
-          <button onClick={props.deleteVisit} id="newTest">
-            New Test
+          <button onClick={() => { props.setView('visitForm'); props.addModalToggle(); }} id="newTest">
+            New Visit
           </button>
-          <button onClick={props.deleteModalToggle} id="newPartner">
+          <button id="newPartner">
             New Partner
           </button>
-          <i className="fas fa-minus-circle fa-3x"></i>
+          <i onClick={props.addModalToggle} className="fas fa-minus-circle fa-3x"></i>
         </div>
       </div>
     </div>

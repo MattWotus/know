@@ -12,7 +12,7 @@ function Navbar(props) {
         <p>Partners</p>
       </div>
       <div className="d-flex flex-column align-items-center justify-content-center add-nav">
-        <i className="fas fa-plus-circle fa-3x"></i>
+        <i onClick={props.addModalToggle} className="fas fa-plus-circle fa-3x"></i>
         <p>Add</p>
       </div>
       <div className="d-flex flex-column align-items-center justify-content-center get-tested-nav">

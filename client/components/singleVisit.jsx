@@ -3,6 +3,7 @@ import SingleVisitDateLocation from './singleVisitDateLocation';
 import SingleVisitList from './singleVisitList';
 import Navbar from './navbar';
 import DeleteModal from './deleteModal';
+import AddModal from './addModal';
 
 class SingleVisit extends React.Component {
   constructor(props) {
@@ -39,6 +40,10 @@ class SingleVisit extends React.Component {
     if (this.state.deleteModal) {
       deleteModal = <DeleteModal deleteVisit={this.deleteVisit} deleteModalToggle={this.deleteModalToggle} />;
     }
+    let addModal = null;
+    if (this.props.addModal) {
+      addModal = <AddModal addModalToggle={this.props.addModalToggle} setView={this.props.setView} />;
+    }
     return (
       <div className="container-fluid mb-5">
         <div className='row'>
@@ -55,10 +60,11 @@ class SingleVisit extends React.Component {
         </div>
         <div className='row'>
           <div className='col-12'>
-            <Navbar setView={this.props.setView} />
+            <Navbar addModalToggle={this.props.addModalToggle} setView={this.props.setView} />
           </div>
         </div>
         {deleteModal}
+        {addModal}
       </div>
     );
   }

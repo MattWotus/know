@@ -1,7 +1,12 @@
 import React from 'react';
 import Navbar from './navbar';
+import AddModal from './addModal';
 
 function Settings(props) {
+  let addModal = null;
+  if (props.addModal) {
+    addModal = <AddModal addModalToggle={props.addModalToggle} setView={props.setView} />;
+  }
   return (
     <div className="container-fluid">
       <div className="row d-flex justify-content-center">
@@ -51,9 +56,10 @@ function Settings(props) {
       </div>
       <div className='row'>
         <div className='col-12'>
-          <Navbar setView={props.setView} />
+          <Navbar addModalToggle={props.addModalToggle} setView={props.setView} />
         </div>
       </div>
+      {addModal}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import Welcome from './welcome';
 import Login from './login';
 import Visits from './visits';
-// import VisitForm from './visitForm';
+import VisitForm from './visitForm';
 import SingleVisit from './singleVisit';
 import Settings from './settings';
 
@@ -12,10 +12,16 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addVisit = this.addVisit.bind(this);
     this.selectVisit = this.selectVisit.bind(this);
+    this.addModalToggle = this.addModalToggle.bind(this);
     this.state = {
       view: 'welcome',
-      visitId: null
+      visitId: null,
+      addModal: false
     };
+  }
+
+  addModalToggle() {
+    this.setState({ addModal: !this.state.addModal });
   }
 
   setView(name) {
@@ -49,15 +55,19 @@ export default class App extends React.Component {
       );
     } else if (this.state.view === 'visits') {
       return (
-        <Visits selectVisit={this.selectVisit} setView={this.setView} />
+        <Visits addModal={this.state.addModal} addModalToggle={this.addModalToggle} selectVisit={this.selectVisit} setView={this.setView} />
       );
     } else if (this.state.view === 'singleVisit') {
       return (
-        <SingleVisit visitId={this.state.visitId} setView={this.setView} />
+        <SingleVisit addModal={this.state.addModal} addModalToggle={this.addModalToggle} visitId={this.state.visitId} setView={this.setView} />
       );
     } else if (this.state.view === 'settings') {
       return (
-        <Settings setView={this.setView} />
+        <Settings addModal={this.state.addModal} addModalToggle={this.addModalToggle} setView={this.setView} />
+      );
+    } else if (this.state.view === 'visitForm') {
+      return (
+        <VisitForm setView={this.setView} />
       );
     }
   }

@@ -116,7 +116,7 @@ class VisitForm extends React.Component {
           <form id="visitForm" onSubmit={this.handleSubmit} onReset={this.handleReset} className="col-12">
             <div className="row" style={header}>
               <div className="col-12 d-flex justify-content-between align-items-center">
-                <button type="reset" className="btn"><h6 className="whiteColor mt-1 mb-0">Cancel</h6></button>
+                <button onClick={() => this.props.setView('visits')} type="reset" className="btn"><h6 className="whiteColor mt-1 mb-0">Cancel</h6></button>
                 <h4 className="mb-0">New Test</h4>
                 <button type="submit" className="btn"><h6 className="whiteColor mt-1 mb-0">Add</h6></button>
               </div>
