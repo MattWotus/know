@@ -237,10 +237,9 @@ app.delete('/api/visits/:visitId', (req, res, next) => {
       error: 'visitId must be a positive integer'
     });
   }
-
   const sql = `
-    DELETE FROM "visitResults" USING "visits"
-    WHERE "visitResults"."visitId" = "visits"."visitId" AND "visits"."visitId" = $1
+    delete from "visitResults"
+      where "visitId" = $1;
   `;
   const params = [visitId];
   db.query(sql, params)
@@ -250,7 +249,15 @@ app.delete('/api/visits/:visitId', (req, res, next) => {
           error: `Cannot find visit with visitId ${visitId}`
         });
       } else {
-        res.sendStatus(204);
+        const sql = `
+          delete from "visits"
+            where "visitId" = $1;
+        `;
+        const params = [visitId];
+        db.query(sql, params)
+          .then(result => {
+            res.sendStatus(204);
+          });
       }
     })
     .catch(err => {
