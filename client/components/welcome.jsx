@@ -3,15 +3,13 @@ import HomeLogo from './homeLogo';
 
 function Welcome() {
   return (
-    <div className="container-fluid d-flex flex-column align-items-center">
-      <div className="row">
-        <div className="col-12 d-flex justify-content-center">
+    <div className="container-fluid d-flex flex-column justify-content-center">
+      <div className="row mb-5">
+        <div className="col-12 d-flex justify-content-center mb-3">
           <HomeLogo />
         </div>
-      </div>
-      <div className="row">
-        <div className="col-12">
-          <h1 className="mb-0">Welcome to Know</h1>
+        <div className="col-12 d-flex justify-content-center mb-5">
+          <h2 className="mb-5">Welcome to Know</h2>
         </div>
       </div>
       <div id="accountButtons" className="row d-flex justify-content-center mb-4">

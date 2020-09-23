@@ -48,7 +48,7 @@ p {
   margin-bottom: 0;
 }
 
-h1 {
+h1, h2 {
   font-weight: normal;
 }
 
@@ -83,4 +83,9 @@ h1 {
 
 .backFontSize {
   font-size: 20px;
+}
+
+.test {
+  position: absolute;
+  top: 50%;
 }

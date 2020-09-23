@@ -1,6 +1,6 @@
 import React from 'react';
-// import Welcome from './welcome';
-import Visits from './visits';
+import Welcome from './welcome';
+// import Visits from './visits';
 // import VisitForm from './visitForm';
 // import SingleVisit from './singleVisit';
 
@@ -23,7 +23,7 @@ export default class App extends React.Component {
   render() {
     return (
       // <VisitForm onSubmit={this.addVisit} />
-      <Visits />
+      <Welcome />
     );
   }
 }
