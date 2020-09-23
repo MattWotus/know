@@ -83,6 +83,19 @@ app.get('/api/visits/:visitId', (req, res, next) => {
         const diseasesArr = Object.keys(resultObj.diseases).map(i => ({
           [i]: resultObj.diseases[i]
         }));
+        for (let i = 0; i < diseasesArr.length; i++) {
+          const diseaseName = Object.keys(diseasesArr[i]).map(obj => [obj]);
+          let result = '';
+          switch (diseasesArr[i][diseaseName]) {
+            case true:
+              result = 'Positive';
+              break;
+            case false:
+              result = 'Negative';
+              break;
+          }
+          diseasesArr[i][diseaseName] = result;
+        }
         resultObj.diseases = diseasesArr;
         res.json(resultObj);
       }
@@ -191,6 +204,19 @@ app.post('/api/visits', (req, res, next) => {
           const diseasesArr = Object.keys(resultObj.diseases).map(i => ({
             [i]: resultObj.diseases[i]
           }));
+          for (let i = 0; i < diseasesArr.length; i++) {
+            const diseaseName = Object.keys(diseasesArr[i]).map(obj => [obj]);
+            let result = '';
+            switch (diseasesArr[i][diseaseName]) {
+              case true:
+                result = 'Positive';
+                break;
+              case false:
+                result = 'Negative';
+                break;
+            }
+            diseasesArr[i][diseaseName] = result;
+          }
           resultObj.diseases = diseasesArr;
           res.status(201).json(resultObj);
         });
