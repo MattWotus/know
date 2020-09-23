@@ -52,7 +52,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view === 'singleVisit') {
       return (
-        <SingleVisit visitId={this.state.visitId} />
+        <SingleVisit visitId={this.state.visitId} setView={this.setView} />
       );
     }
   }

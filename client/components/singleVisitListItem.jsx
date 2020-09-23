@@ -14,7 +14,7 @@ function SingleVisitListItem(props) {
 
   const result = props.result;
   return (
-    <div className='visit d-flex justify-content-between align-items-center mt-4 mb-4'>
+    <div className='testResult d-flex justify-content-between align-items-center mt-4 mb-4'>
       <div>
         {testNameUpper}
       </div>
