@@ -8,8 +8,10 @@ class SingleVisit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visit: {}
+      visit: {},
+      deleteModal: false
     };
+    this.deleteModalToggle = this.deleteModalToggle.bind(this);
   }
 
   componentDidMount() {
@@ -18,13 +20,21 @@ class SingleVisit extends React.Component {
       .then(data => this.setState({ visit: data }));
   }
 
+  deleteModalToggle() {
+    this.setState({ deleteModal: !this.state.deleteModal });
+  }
+
   render() {
+    let deleteModal = null;
+    if (this.state.deleteModal) {
+      deleteModal = <DeleteModal deleteModalToggle={this.deleteModalToggle} />;
+    }
     return (
       <div className="container-fluid mb-5">
         <div className='row'>
           <div className='col-12 d-flex justify-content-between align-items-center mt-4'>
             <div onClick={() => this.props.setView('visits')} className="blueColor backFontSize backButton">&lt; Back</div>
-            <div><i className="fas fa-ellipsis-h fa-3x"></i></div>
+            <div><i onClick={this.deleteModalToggle} className="fas fa-ellipsis-h fa-3x visit-ellipsis"></i></div>
           </div>
         </div>
         <SingleVisitDateLocation data={this.state.visit} />
@@ -38,7 +48,7 @@ class SingleVisit extends React.Component {
             <Navbar />
           </div>
         </div>
-        <DeleteModal />
+        {deleteModal}
       </div>
     );
   }

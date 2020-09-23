@@ -152,6 +152,10 @@ h3 {
   width: 60%;
 }
 
+.visit-ellipsis {
+  cursor: pointer;
+}
+
 #deleteYes, #deleteNo {
   width: 40%;
   background-color: #62B3F5;

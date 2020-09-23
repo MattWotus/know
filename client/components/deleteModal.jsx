@@ -1,6 +1,6 @@
 import React from 'react';
 
-function DeleteModal() {
+function DeleteModal(props) {
   return (
     <div className="modalOverlay">
       <div className="modalContent">
@@ -9,7 +9,7 @@ function DeleteModal() {
           <button id="deleteYes">
             Yes
           </button>
-          <button id="deleteNo">
+          <button onClick={props.deleteModalToggle} id="deleteNo">
             No
           </button>
         </div>
