@@ -4,7 +4,7 @@ let express = require('express'),
 
   app = module.exports = express();
 
-const db = require('../../database');
+const db = require('../database');
 
 app.delete('/api/visits/:visitId', (req, res, next) => {
   const visitId = parseFloat(req.params.visitId);
