@@ -1,6 +1,9 @@
 body {
   height: 100vh;
   overflow-y: scroll;
+  font-family: 'Raleway',
+    sans-serif;
+  background-color: #F8F8F8;
 }
 
 #root {
@@ -21,7 +24,8 @@ body {
   bottom: 0;
 }
 
-#getStarted {
+#getStarted,
+#login {
   width: 100%;
   height: 6vh;
   background-color: #62B3F5;
@@ -42,13 +46,17 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-p {
+#navbar p {
+  font-family: 'Rock Salt',
+    cursive;
   font-size: 12px;
   margin-top: 5px;
   margin-bottom: 0;
 }
 
-h1 {
+h1,
+h2,
+h3 {
   font-weight: normal;
 }
 
@@ -56,8 +64,6 @@ h1 {
 .fa-ellipsis-h {
   color: #F16A73;
 }
-
-
 
 #innerLogo {
   max-width: 80%;
@@ -70,6 +76,19 @@ h1 {
   padding-right: 20px;
   border: 1px solid black;
   border-radius: 25px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 8px #888888;
+  cursor: pointer;
+}
+
+.testResult {
+  width: 100%;
+  height: 10vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color: rgb(255, 255, 255);
   box-shadow: 2px 2px 8px #888888;
 }
 
@@ -81,6 +100,64 @@ h1 {
   color: rgb(255, 255, 255);
 }
 
+.whiteBackground {
+  background-color: rgb(255, 255, 255);
+}
+
 .backFontSize {
   font-size: 20px;
+}
+
+#email,
+#password {
+  background-color: #E5E5E5;
+}
+
+#passwordHelp p {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.backButton {
+  cursor: pointer;
+}
+
+.dateLocation {
+  position: absolute;
+  top: 0;
+}
+
+.modalOverlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  width: 60%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  border: 3px solid #F16A73;
+}
+
+.buttons {
+  width: 60%;
+}
+
+.visit-ellipsis {
+  cursor: pointer;
+}
+
+#deleteYes, #deleteNo {
+  width: 40%;
+  background-color: #62B3F5;
+  color: white;
 }

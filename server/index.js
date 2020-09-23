@@ -34,7 +34,7 @@ app.get('/api/visits', (req, res, next) => {
       join "diseases" using ("diseaseId")
       where "userId" = $1
       group by "visitId"
-      order by "date";
+      order by "date" desc;
   `;
   const params = [userId];
   db.query(sql, params)

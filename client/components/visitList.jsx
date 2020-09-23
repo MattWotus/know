@@ -26,6 +26,7 @@ class VisitList extends React.Component {
         this.state.visits.map(visit => {
           return (
             <VisitListItem
+              selectVisit={this.props.selectVisit}
               key={visit.visitId}
               id={visit.visitId}
               date={visit.date} />
