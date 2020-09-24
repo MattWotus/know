@@ -111,7 +111,7 @@ class VisitForm extends React.Component {
       maxWidth: '30vw'
     };
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
           <form id="visitForm" onSubmit={this.handleSubmit} onReset={this.handleReset} className="col-12">
             <div className="row" style={header}>

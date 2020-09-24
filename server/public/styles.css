@@ -9,8 +9,14 @@ body {
   height: 100%;
 }
 
-.container-fluid {
+.container {
   height: 100%;
+}
+
+.col-10,
+.col-11 {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 #homeLogo {
@@ -156,6 +162,7 @@ settings-nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: rgba(248, 248, 248, 0.85);
 }
 
 .deleteModalContent {

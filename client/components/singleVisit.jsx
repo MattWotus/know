@@ -45,7 +45,7 @@ class SingleVisit extends React.Component {
       addModal = <AddModal addModalToggle={this.props.addModalToggle} setView={this.props.setView} />;
     }
     return (
-      <div className="container-fluid mb-5">
+      <div className="container mb-5">
         <div className='row'>
           <div className='col-12 d-flex justify-content-between align-items-center mt-4'>
             <div onClick={() => this.props.setView('visits')} className="blueColor backFontSize backButton">&lt; Back</div>
