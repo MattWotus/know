@@ -7,7 +7,7 @@ function Navbar(props) {
         <i className="fas fa-notes-medical fa-3x"></i>
         <p>Results</p>
       </div>
-      <div className="d-flex flex-column align-items-center justify-content-center partners-nav">
+      <div onClick={() => props.setView('partners')} className="d-flex flex-column align-items-center justify-content-center partners-nav">
         <i className="fas fa-user-friends fa-3x"></i>
         <p>Partners</p>
       </div>
