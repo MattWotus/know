@@ -20,17 +20,13 @@ ALTER TABLE IF EXISTS ONLY public.visits DROP CONSTRAINT IF EXISTS visits_fk0;
 ALTER TABLE IF EXISTS ONLY public."visitResults" DROP CONSTRAINT IF EXISTS "visitResults_fk1";
 ALTER TABLE IF EXISTS ONLY public."visitResults" DROP CONSTRAINT IF EXISTS "visitResults_fk0";
 ALTER TABLE IF EXISTS ONLY public.partners DROP CONSTRAINT IF EXISTS partners_fk0;
-ALTER TABLE IF EXISTS ONLY public."parterNotes" DROP CONSTRAINT IF EXISTS "parterNotes_fk1";
-ALTER TABLE IF EXISTS ONLY public."parterNotes" DROP CONSTRAINT IF EXISTS "parterNotes_fk0";
 ALTER TABLE IF EXISTS ONLY public.visits DROP CONSTRAINT IF EXISTS visits_pk;
 ALTER TABLE IF EXISTS ONLY public.users DROP CONSTRAINT IF EXISTS users_pk;
 ALTER TABLE IF EXISTS ONLY public.partners DROP CONSTRAINT IF EXISTS partners_pk;
-ALTER TABLE IF EXISTS ONLY public.notes DROP CONSTRAINT IF EXISTS notes_pk;
 ALTER TABLE IF EXISTS ONLY public.diseases DROP CONSTRAINT IF EXISTS diseases_pk;
 ALTER TABLE IF EXISTS public.visits ALTER COLUMN "visitId" DROP DEFAULT;
 ALTER TABLE IF EXISTS public.users ALTER COLUMN "userId" DROP DEFAULT;
 ALTER TABLE IF EXISTS public.partners ALTER COLUMN "partnerId" DROP DEFAULT;
-ALTER TABLE IF EXISTS public.notes ALTER COLUMN "noteId" DROP DEFAULT;
 ALTER TABLE IF EXISTS public.diseases ALTER COLUMN "diseaseId" DROP DEFAULT;
 DROP SEQUENCE IF EXISTS public."visits_visitId_seq";
 DROP TABLE IF EXISTS public.visits;
@@ -39,9 +35,6 @@ DROP SEQUENCE IF EXISTS public."users_userId_seq";
 DROP TABLE IF EXISTS public.users;
 DROP SEQUENCE IF EXISTS public."partners_partnerId_seq";
 DROP TABLE IF EXISTS public.partners;
-DROP TABLE IF EXISTS public."parterNotes";
-DROP SEQUENCE IF EXISTS public."notes_noteId_seq";
-DROP TABLE IF EXISTS public.notes;
 DROP SEQUENCE IF EXISTS public."diseases_diseaseId_seq";
 DROP TABLE IF EXISTS public.diseases;
 DROP EXTENSION IF EXISTS plpgsql;
@@ -109,8 +102,6 @@ CREATE SEQUENCE public."diseases_diseaseId_seq"
 ALTER SEQUENCE public."diseases_diseaseId_seq" OWNED BY public.diseases."diseaseId";
 
 
-
-
 --
 -- Name: partners; Type: TABLE; Schema: public; Owner: -
 --
@@ -122,7 +113,8 @@ CREATE TABLE public.partners (
     city text,
     state text,
     name text NOT NULL,
-    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
+    note text,
+    "createdAt" timestamp without time zone NOT NULL
 );
 
 
@@ -234,13 +226,6 @@ ALTER TABLE ONLY public.diseases ALTER COLUMN "diseaseId" SET DEFAULT nextval('p
 
 
 --
--- Name: notes noteId; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.notes ALTER COLUMN "noteId" SET DEFAULT nextval('public."notes_noteId_seq"'::regclass);
-
-
---
 -- Name: partners partnerId; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -277,26 +262,10 @@ COPY public.diseases ("diseaseId", name, description) FROM stdin;
 
 
 --
--- Data for Name: notes; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY public.notes ("noteId", note) FROM stdin;
-\.
-
-
---
--- Data for Name: parterNotes; Type: TABLE DATA; Schema: public; Owner: -
---
-
-COPY public."parterNotes" ("partnerId", "notesId") FROM stdin;
-\.
-
-
---
 -- Data for Name: partners; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public.partners ("partnerId", "userId", date, city, state, name, "createdAt") FROM stdin;
+COPY public.partners ("partnerId", "userId", date, city, state, name, note, "createdAt") FROM stdin;
 \.
 
 
@@ -350,13 +319,6 @@ SELECT pg_catalog.setval('public."diseases_diseaseId_seq"', 7, true);
 
 
 --
--- Name: notes_noteId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
---
-
-SELECT pg_catalog.setval('public."notes_noteId_seq"', 1, false);
-
-
---
 -- Name: partners_partnerId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
@@ -386,14 +348,6 @@ ALTER TABLE ONLY public.diseases
 
 
 --
--- Name: notes notes_pk; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.notes
-    ADD CONSTRAINT notes_pk PRIMARY KEY ("noteId");
-
-
---
 -- Name: partners partners_pk; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -415,22 +369,6 @@ ALTER TABLE ONLY public.users
 
 ALTER TABLE ONLY public.visits
     ADD CONSTRAINT visits_pk PRIMARY KEY ("visitId");
-
-
---
--- Name: parterNotes parterNotes_fk0; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public."parterNotes"
-    ADD CONSTRAINT "parterNotes_fk0" FOREIGN KEY ("partnerId") REFERENCES public.partners("partnerId");
-
-
---
--- Name: parterNotes parterNotes_fk1; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public."parterNotes"
-    ADD CONSTRAINT "parterNotes_fk1" FOREIGN KEY ("notesId") REFERENCES public.notes("noteId");
 
 
 --
@@ -475,3 +413,4 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
+
