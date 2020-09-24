@@ -8,7 +8,7 @@ function Settings(props) {
     addModal = <AddModal addModalToggle={props.addModalToggle} setView={props.setView} />;
   }
   return (
-    <div className="container">
+    <div className="container active5">
       <div className="row d-flex justify-content-center">
         <div className="col-11 d-flex justify-content-center">
           <h2 className="mt-3 mb-3">Settings</h2>
