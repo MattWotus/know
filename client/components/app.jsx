@@ -41,6 +41,7 @@ export default class App extends React.Component {
       },
       body: JSON.stringify(newVisit)
     });
+    this.setState({ view: 'visits' });
   }
 
   render() {
@@ -67,7 +68,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view === 'visitForm') {
       return (
-        <VisitForm setView={this.setView} />
+        <VisitForm onSubmit={this.addVisit} setView={this.setView} />
       );
     }
   }

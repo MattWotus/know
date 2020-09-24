@@ -169,7 +169,11 @@ settings-nav {
   border: 3px solid #F16A73;
 }
 
-.buttons {
+.deleteButtons {
+  width: 60%;
+}
+
+.addButtons {
   width: 100%;
   height: 100%;
 }
@@ -201,9 +205,10 @@ settings-nav {
 .addModalContent {
   position: absolute;
   bottom: 0;
-  width: 60%;
-  height: 35%;
-  margin-bottom: 3vh;
+  width: 75%;
+  height: 30%;
+  margin-bottom: 4vh;
+  margin-right: 4%;
   display: flex;
   flex-direction: column;
   text-align: center;

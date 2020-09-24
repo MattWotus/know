@@ -4,7 +4,7 @@ function AddModal(props) {
   return (
     <div className="addModalOverlay">
       <div className="addModalContent">
-        <div className="buttons d-flex flex-column justify-content-around align-items-center">
+        <div className="addButtons d-flex flex-column justify-content-around align-items-center">
           <button onClick={() => { props.setView('visitForm'); props.addModalToggle(); }} id="newTest">
             New Visit
           </button>

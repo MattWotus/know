@@ -5,7 +5,7 @@ function DeleteModal(props) {
     <div className="deleteModalOverlay">
       <div className="deleteModalContent">
         <p>Do you want to delete this visit?</p>
-        <div className="buttons d-flex justify-content-around">
+        <div className="deleteButtons d-flex justify-content-around">
           <button onClick={props.deleteVisit} id="deleteYes">
             Yes
           </button>
