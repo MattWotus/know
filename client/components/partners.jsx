@@ -9,8 +9,8 @@ function Partners(props) {
     addModal = <AddModal addModalToggle={props.addModalToggle} setView={props.setView} />;
   }
   return (
-    <div className="container-fluid active2">
-      <div className='row d-flex justify-content-center mt-3'>
+    <div className="container active2">
+      <div className='row d-flex justify-content-center pt-3'>
         <div className='col-11'>
           <PartnerList />
         </div>
