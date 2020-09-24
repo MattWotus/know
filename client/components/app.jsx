@@ -2,6 +2,7 @@ import React from 'react';
 import Welcome from './welcome';
 import Login from './login';
 import Visits from './visits';
+import Partners from './partners';
 import VisitForm from './visitForm';
 import SingleVisit from './singleVisit';
 import Settings from './settings';
@@ -66,6 +67,10 @@ export default class App extends React.Component {
     } else if (this.state.view === 'settings') {
       return (
         <Settings addModal={this.state.addModal} addModalToggle={this.addModalToggle} setView={this.setView} />
+      );
+    } else if (this.state.view === 'partners') {
+      return (
+        <Partners setView={this.setView} />
       );
     } else if (this.state.view === 'visitForm') {
       return (
