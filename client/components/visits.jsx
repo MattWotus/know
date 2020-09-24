@@ -10,7 +10,7 @@ function Visits(props) {
     addModal = <AddModal addModalToggle={props.addModalToggle} setView={props.setView} />;
   }
   return (
-    <div className="container">
+    <div className="container active1">
       <div className='row'>
         <div className='col-12 d-flex justify-content-center mt-4'>
           <InnerLogo />
