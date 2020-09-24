@@ -9,6 +9,11 @@ body {
   height: 100%;
 }
 
+#root > div {
+  height: 86vh;
+  overflow-y: auto;
+}
+
 .container {
   height: 100%;
 }
@@ -245,12 +250,6 @@ settings-nav {
   color: white;
   border: none;
   border-radius: 20px;
-}
-
-.active1 .results-nav,
-.active2 .partners-nav,
-.active5 .settings-nav {
-  color: #62B3F5;
 }
 
 .active1 .results-nav,
