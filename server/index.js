@@ -268,13 +268,63 @@ app.delete('/api/visits/:visitId', (req, res, next) => {
     });
 });
 
+app.get('/api/partners', (req, res, next) => {
+  const sql = `
+    select
+      "date",
+      "city",
+      "state",
+      "name"
+      from "partners"
+      order by "date" desc;
+  `;
+  db.query(sql)
+    .then(result => {
+      return res.status(200).json(result.rows);
+    })
+    .catch(err => {
+      console.error(err);
+      return res.status(500).json({
+        error: 'An unexpected error occured.'
+      });
+    });
+});
+
+app.post('/api/partners', (req, res, next) => {
+  const body = req.body;
+  if (body.date && body.name) {
+    const sql = `
+    insert into "partners" ("userId", "date", "city", "state", "name")
+    values ($1, $2, $3, $4, $5)
+    returning *
+  `;
+    const params = [userId, body.date, body.city, body.state, body.name];
+    db.query(sql, params)
+      .then(result => {
+        return res.status(201).json(result.rows[0]);
+      })
+      .catch(err => {
+        console.error(err);
+        return res.status(500).json({
+          error: 'An unexpected error occured.'
+        });
+      });
+  } else {
+    return res.status(400).json({
+      error: 'content is a required field'
+    });
+  }
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
 
 app.use((err, req, res, next) => {
   if (err instanceof ClientError) {
-    res.status(err.status).json({ error: err.message });
+    res.status(err.status).json({
+      error: err.message
+    });
   } else {
     console.error(err);
     res.status(500).json({
