@@ -10,8 +10,7 @@ class PartnerForm extends React.Component {
       date: '',
       city: '',
       state: '',
-      name: '',
-      note: ''
+      name: ''
     };
   }
 
@@ -23,22 +22,21 @@ class PartnerForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const newVisit = {
+    const newPartner = {
       date: this.state.date,
       city: this.state.city,
       state: this.state.state,
-      name: this.state.name,
-      note: this.state.note
+      name: this.state.name
     };
-    this.props.onSubmit(newVisit);
-    this.setState({
-      date: '',
-      city: '',
-      state: '',
-      name: '',
-      note: ''
+    fetch('/api/partners', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newPartner)
     });
-    document.getElementById('partnerForm').reset();
+    this.handleReset();
+    this.props.setView('partners');
   }
 
   handleReset() {
@@ -46,8 +44,7 @@ class PartnerForm extends React.Component {
       date: '',
       city: '',
       state: '',
-      name: '',
-      note: ''
+      name: ''
     });
     document.getElementById('partnerForm').reset();
   }
@@ -57,7 +54,6 @@ class PartnerForm extends React.Component {
     const city = this.state.city;
     const state = this.state.state;
     const name = this.state.name;
-    const note = this.state.note;
     const header = {
       height: '8vh',
       backgroundColor: '#62B3F5',
@@ -70,10 +66,10 @@ class PartnerForm extends React.Component {
       maxWidth: '26vw'
     };
     const stateWidth = {
-      maxWidth: '20vw'
+      maxWidth: '19vw'
     };
-    const nameNoteWidth = {
-      maxWidth: '46vw'
+    const nameWidth = {
+      maxWidth: '45vw'
     };
     return (
       <div className="container-fluid">
@@ -81,7 +77,7 @@ class PartnerForm extends React.Component {
           <form id="partnerForm" onSubmit={this.handleSubmit} onReset={this.handleReset} className="col-12">
             <div className="row" style={header}>
               <div className="col-12 d-flex justify-content-between align-items-center">
-                <button onClick={() => this.props.setView('visits')} type="reset" className="btn"><h6 className="whiteColor mt-1 mb-0">Cancel</h6></button>
+                <button onClick={() => this.props.setView('partners')} type="reset" className="btn"><h6 className="whiteColor mt-1 mb-0">Cancel</h6></button>
                 <h4 className="mb-0">New Partner</h4>
                 <button type="submit" className="btn"><h6 className="whiteColor mt-1 mb-0">Add</h6></button>
               </div>
@@ -151,13 +147,9 @@ class PartnerForm extends React.Component {
                 </select>
               </div>
             </div>
-            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3 border-bottom">
+            <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3">
               <label htmlFor="chlamydia" className="mb-0"><h5 className="mb-0">Name</h5></label>
-              <input type="text" id="name" className="form-control mr-2" name="name" placeholder="Name" style={nameNoteWidth} value={name} onChange={this.handleChange} />
-            </div>
-            <div className="input-group d-flex align-items-start justify-content-between pt-3 pb-2">
-              <label htmlFor="chlamydia" className="mb-0"><h5 className="mb-0">Note</h5></label>
-              <textarea type="text" id="note" className="form-control mr-2" name="note" placeholder="Note" style={nameNoteWidth} value={note} onChange={this.handleChange} />
+              <input type="text" id="name" className="form-control mr-2" name="name" placeholder="Name" style={nameWidth} value={name} onChange={this.handleChange} />
             </div>
           </form>
         </div>
