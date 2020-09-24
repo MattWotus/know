@@ -9,6 +9,11 @@ body {
   height: 100%;
 }
 
+#root > div {
+  height: 86vh;
+  overflow-y: auto;
+}
+
 .container {
   height: 100%;
 }
