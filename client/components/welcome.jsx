@@ -3,7 +3,7 @@ import HomeLogo from './homeLogo';
 
 function Welcome(props) {
   return (
-    <div className="container-fluid d-flex flex-column justify-content-center whiteBackground">
+    <div className="container d-flex flex-column justify-content-center whiteBackground">
       <div className="row mb-5">
         <div className="col-12 d-flex justify-content-center mb-3">
           <HomeLogo />

@@ -72,7 +72,7 @@ class PartnerForm extends React.Component {
       maxWidth: '45vw'
     };
     return (
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
           <form id="partnerForm" onSubmit={this.handleSubmit} onReset={this.handleReset} className="col-12">
             <div className="row" style={header}>

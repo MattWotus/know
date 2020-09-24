@@ -3,14 +3,14 @@ import InnerLogo from './innerLogo';
 
 function Login(props) {
   return (
-    <div className="container-fluid pt-5 whiteBackground">
+    <div className="container pt-5 whiteBackground">
       <div className="row mt-5 mb-5">
         <div className="col-12 d-flex justify-content-center">
           <InnerLogo />
         </div>
       </div>
       <div className="row d-flex justify-content-center text-center">
-        <div className="col-11">
+        <div className="col-10">
           <form>
             <div className="form-group">
               <input type="email" className="form-control" id="email" placeholder="Email" />
