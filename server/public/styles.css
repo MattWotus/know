@@ -150,8 +150,9 @@ settings-nav {
 .deleteModalOverlay {
   width: 100%;
   height: 100vh;
-  position: fixed;
+  position: absolute;
   top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
