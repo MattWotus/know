@@ -114,7 +114,7 @@ CREATE TABLE public.partners (
     state text,
     name text NOT NULL,
     note text,
-    "createdAt" timestamp without time zone NOT NULL
+    "createdAt" timestamp(6) with time zone DEFAULT now() NOT NULL
 );
 
 
@@ -413,4 +413,3 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 --
 -- PostgreSQL database dump complete
 --
-
