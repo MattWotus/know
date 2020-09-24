@@ -91,6 +91,17 @@ h3 {
   cursor: pointer;
 }
 
+.partner {
+  width: 100%;
+  height: 10vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 8px #888888;
+}
+
 .testResult {
   width: 100%;
   height: 10vh;
@@ -175,6 +186,10 @@ settings-nav {
   text-align: center;
   background-color: rgb(255, 255, 255);
   border: 3px solid #F16A73;
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }
 
 .deleteButtons {

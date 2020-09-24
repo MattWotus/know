@@ -11,7 +11,7 @@ function AddModal(props) {
           <button onClick={() => { props.setView('partnerForm'); props.addModalToggle(); }} id="newPartner">
             New Partner
           </button>
-          <i onClick={props.addModalToggle} className="fas fa-minus-circle fa-3x"></i>
+          <i onClick={props.addModalToggle} className="cursor-pointer fas fa-minus-circle fa-3x"></i>
         </div>
       </div>
     </div>
