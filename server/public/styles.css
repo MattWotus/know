@@ -7,9 +7,10 @@ body {
 
 #root {
   height: 100%;
+  background-color: #F8F8F8;
 }
 
-#root > div {
+#root>div {
   height: 86vh;
   overflow-y: auto;
 }
@@ -46,7 +47,7 @@ body {
 #haveAccount {
   width: 100%;
   height: 6vh;
-  background-color: rgb(255, 255, 255);
+  background-color: #F8F8F8;
   color: #62B3F5
 }
 
