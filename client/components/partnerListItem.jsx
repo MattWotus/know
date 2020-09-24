@@ -10,12 +10,14 @@ function PartnerListItem(props) {
   const month = monthNames[newDate.getUTCMonth()];
   const formattedDate = month + ' ' + day + ',' + ' ' + year;
   return (
-    <div onClick={() => props.selectPartner(props.id)} className='visit d-flex justify-content-between align-items-center mt-4 mb-4'>
+    <div className='partner d-flex justify-content-between align-items-center mt-4 mb-4'>
       <div>
-        {formattedDate}
+        {props.name}
       </div>
       <div>
-        <div className="blueColor">&gt;</div>
+        <div>
+          {formattedDate}
+        </div>
       </div>
     </div>
   );

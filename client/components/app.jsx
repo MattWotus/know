@@ -70,7 +70,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view === 'partners') {
       return (
-        <Partners setView={this.setView} />
+        <Partners addModal={this.state.addModal} addModalToggle={this.addModalToggle} setView={this.setView} />
       );
     } else if (this.state.view === 'visitForm') {
       return (
