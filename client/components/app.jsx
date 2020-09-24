@@ -7,6 +7,7 @@ import VisitForm from './visitForm';
 import SingleVisit from './singleVisit';
 import Settings from './settings';
 import PartnerForm from './partnerForm';
+import GetTested from './getTested';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -79,6 +80,10 @@ export default class App extends React.Component {
     } else if (this.state.view === 'partnerForm') {
       return (
         <PartnerForm setView={this.setView} />
+      );
+    } else if (this.state.view === 'getTested') {
+      return (
+        <GetTested setView={this.setView} />
       );
     }
   }
