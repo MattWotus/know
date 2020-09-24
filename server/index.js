@@ -271,6 +271,7 @@ app.delete('/api/visits/:visitId', (req, res, next) => {
 app.get('/api/partners', (req, res, next) => {
   const sql = `
     select
+      "partnerId",
       "date",
       "city",
       "state",
