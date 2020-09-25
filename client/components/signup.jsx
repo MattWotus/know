@@ -62,19 +62,19 @@ class Signup extends React.Component {
           <div className="col-10">
             <form id="signupForm" onSubmit={this.handleSubmit} onReset={this.handleReset}>
               <div className="form-group">
-                <input type="text" className="form-control" id="firstName" placeholder="First Name" required />
+                <input name="firstName" type="text" className="form-control" id="firstName" placeholder="First Name" required />
               </div>
               <div className="form-group">
-                <input type="text" className="form-control" id="lastName" placeholder="Last Name" required />
+                <input name="lastName" type="text" className="form-control" id="lastName" placeholder="Last Name" required />
               </div>
               <div className="form-group">
-                <input type="email" className="form-control" id="email" placeholder="Email" required />
+                <input name="email" type="email" className="form-control" id="email" placeholder="Email" required />
               </div>
               <div className="form-group">
-                <input type="password" className="form-control" id="password" placeholder="Password" required />
+                <input name="password" type="password" className="form-control" id="password" placeholder="Password" required />
               </div>
               <div className="form-group">
-                <input type="password" className="form-control" id="confirmPassword" placeholder="Confirm Password" required />
+                <input name="confirmPassword" type="password" className="form-control" id="confirmPassword" placeholder="Confirm Password" required />
               </div>
               <button type="submit" id="login" className="btn mt-3"><h5 className="mb-0">Create Account</h5></button>
             </form>
