@@ -148,11 +148,14 @@ h3 {
 }
 
 #email,
-#password {
+#password,
+#firstName,
+#lastName,
+#confirmPassword {
   background-color: #E5E5E5;
 }
 
-#passwordHelp p {
+#createAccount p,  #signIn p {
   color: rgba(0, 0, 0, 0.5);
 }
 
