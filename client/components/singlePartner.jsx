@@ -49,7 +49,7 @@ class SinglePartner extends React.Component {
         <div className='row'>
           <div className='col-12 d-flex justify-content-between align-items-center mt-4'>
             <div onClick={() => this.props.setView('partners')} className="blueColor backFontSize backButton">&lt; Back</div>
-            {/* <div><i onClick={this.deleteModalToggle} className="fas fa-ellipsis-h fa-3x visit-ellipsis"></i></div> */}
+            <div><i onClick={this.deleteModalToggle} className="fas fa-ellipsis-h fa-3x visit-ellipsis"></i></div>
           </div>
         </div>
         <SingleVisitDateLocation data={this.state.partner} />
