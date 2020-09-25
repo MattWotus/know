@@ -18,7 +18,7 @@ export default class App extends React.Component {
     this.selectVisit = this.selectVisit.bind(this);
     this.addModalToggle = this.addModalToggle.bind(this);
     this.state = {
-      view: 'welcome',
+      view: 'visits',
       visitId: null,
       addModal: false
     };
