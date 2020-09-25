@@ -3,7 +3,7 @@ import HomeLogo from './homeLogo';
 
 function Welcome(props) {
   return (
-    <div className="container d-flex flex-column justify-content-center whiteBackground">
+    <div className="container d-flex flex-column justify-content-center">
       <div className="row mb-5">
         <div className="col-12 d-flex justify-content-center mb-3">
           <HomeLogo />
@@ -12,7 +12,7 @@ function Welcome(props) {
           <h2 className="mb-5">Welcome to Know</h2>
         </div>
       </div>
-      <div id="accountButtons" className="row d-flex justify-content-center whiteBackground pb-4">
+      <div id="accountButtons" className="row d-flex justify-content-center pb-4">
         <div className="col-11 mb-2">
           <button onClick={() => props.setView('signup')} type="button" id="getStarted" className="btn"><h5 className="mb-0">Get Started</h5></button>
         </div>
