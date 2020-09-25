@@ -5,6 +5,7 @@ import Visits from './visits';
 import Partners from './partners';
 import VisitForm from './visitForm';
 import SingleVisit from './singleVisit';
+import SinglePartner from './singlePartner';
 import Settings from './settings';
 import PartnerForm from './partnerForm';
 
@@ -33,6 +34,11 @@ export default class App extends React.Component {
   selectVisit(visitId) {
     this.setState({ visitId: visitId });
     this.setState({ view: 'singleVisit' });
+  }
+
+  selectPartner(partnerId) {
+    this.setState({ partnerId: partnerId });
+    this.setState({ view: 'singlePartner' });
   }
 
   addVisit(newVisit) {
@@ -71,6 +77,10 @@ export default class App extends React.Component {
     } else if (this.state.view === 'partners') {
       return (
         <Partners addModal={this.state.addModal} addModalToggle={this.addModalToggle} setView={this.setView} />
+      );
+    } else if (this.state.view === 'singlePartner') {
+      return (
+        <SinglePartner addModal={this.state.addModal} addModalToggle={this.addModalToggle} partnerId={this.state.partnerId} setView={this.setView} />
       );
     } else if (this.state.view === 'visitForm') {
       return (
