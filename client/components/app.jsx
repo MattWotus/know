@@ -54,7 +54,6 @@ export default class App extends React.Component {
       return (
         <Welcome setView={this.setView} />
       );
-
     } else if (this.state.view === 'login') {
       return (
         <Login setView={this.setView} />
