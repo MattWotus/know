@@ -99,16 +99,16 @@ class VisitForm extends React.Component {
       color: 'rgb(255, 255, 255'
     };
     const dateWidth = {
-      maxWidth: '60vw'
+      maxWidth: '60%'
     };
     const cityWidth = {
-      maxWidth: '35vw'
+      maxWidth: '65%'
     };
     const stateWidth = {
-      maxWidth: '25vw'
+      maxWidth: '45%'
     };
     const resultWidth = {
-      maxWidth: '30vw'
+      maxWidth: '30%'
     };
     return (
       <div className="container">

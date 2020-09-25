@@ -81,7 +81,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="container pt-5">
+      <div className="container whiteBackground pt-5">
         <div className="row mt-5 mb-5">
           <div className="col-12 d-flex justify-content-center">
             <InnerLogo />
