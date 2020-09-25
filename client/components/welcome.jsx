@@ -14,7 +14,7 @@ function Welcome(props) {
       </div>
       <div id="accountButtons" className="row d-flex justify-content-center pb-4">
         <div className="col-11 mb-2">
-          <button onClick={() => props.setView('signup')} type="button" id="getStarted" className="btn"><h5 className="mb-0">Get Started</h5></button>
+          <button type="button" id="getStarted" className="btn"><h5 className="mb-0">Get Started</h5></button>
         </div>
         <div className="col-11">
           <button onClick={() => props.setView('login')} type="button" id="haveAccount" className="btn"><h5 className="mb-0">I Have An Account</h5></button>
