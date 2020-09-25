@@ -47,7 +47,7 @@ function Settings(props) {
         </div>
       </div>
       <div className="row d-flex justify-content-center">
-        <div onClick={() => props.setView('login')}className="col-11 d-flex justify-content-between align-items-center mt-3 mb-3 settings">
+        <div onClick={() => props.setView('welcome')}className="col-11 d-flex justify-content-between align-items-center mt-3 mb-3 settings">
           <div>Log Out</div>
           <div>
             <div className="blueColor">&gt;</div>

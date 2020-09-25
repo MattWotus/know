@@ -8,7 +8,6 @@ import SingleVisit from './singleVisit';
 import Settings from './settings';
 import PartnerForm from './partnerForm';
 import GetTested from './getTested';
-import Signup from './signup';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -54,10 +53,6 @@ export default class App extends React.Component {
     if (this.state.view === 'welcome') {
       return (
         <Welcome setView={this.setView} />
-      );
-    } else if (this.state.view === 'signup') {
-      return (
-        <Signup setView={this.setView} />
       );
     } else if (this.state.view === 'login') {
       return (
