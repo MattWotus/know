@@ -17,7 +17,7 @@ function Visits(props) {
         </div>
       </div>
       <div className='row d-flex justify-content-center'>
-        <div className='col-11'>
+        <div className='col-11 d-flex justify-content-center'>
           <VisitList selectVisit={props.selectVisit} />
         </div>
       </div>
