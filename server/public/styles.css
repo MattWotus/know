@@ -1,13 +1,12 @@
 body {
+  max-width: 500px;
   height: 100vh;
   font-family: 'Raleway',
     sans-serif;
-  background-color: #F8F8F8;
 }
 
 #root {
   height: 100%;
-  background-color: #F8F8F8;
 }
 
 #root>div {
@@ -30,7 +29,7 @@ body {
 }
 
 #accountButtons {
-  width: 100%;
+  width: 500px;
   position: absolute;
   bottom: 0;
 }
@@ -47,11 +46,11 @@ body {
 #haveAccount {
   width: 100%;
   height: 6vh;
-  background-color: #F8F8F8;
   color: #62B3F5
 }
 
 #navbar {
+  width: 500px;
   height: 14vh;
   bottom: 0;
   background-color: rgb(255, 255, 255);
@@ -169,12 +168,13 @@ settings-nav {
 }
 
 .dateLocation {
+  width: 300px;
   position: absolute;
   top: 0;
 }
 
 .deleteModalOverlay {
-  width: 100%;
+  width: 500px;
   height: 100vh;
   position: absolute;
   top: 0;
@@ -222,7 +222,7 @@ settings-nav {
 }
 
 .addModalOverlay {
-  width: 100%;
+  width: 500px;
   height: 100vh;
   position: absolute;
   top: 0;

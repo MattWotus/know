@@ -12,7 +12,7 @@ function Welcome(props) {
           <h2 className="mb-5">Welcome to Know</h2>
         </div>
       </div>
-      <div id="accountButtons" className="row d-flex justify-content-center mb-4">
+      <div id="accountButtons" className="row d-flex justify-content-center whiteBackground pb-4">
         <div className="col-11 mb-2">
           <button onClick={() => props.setView('signup')} type="button" id="getStarted" className="btn"><h5 className="mb-0">Get Started</h5></button>
         </div>
