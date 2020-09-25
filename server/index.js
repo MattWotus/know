@@ -352,7 +352,7 @@ app.post('/api/signup', (req, res, next) => {
         });
       }
     });
-  bcrypt.hash(req.body.password, 8)
+  bcrypt.hash(req.body.password, 10)
     .then(hash => {
       const sql = `
           insert into "users" ("firstName", "lastName",  "email", "password")
@@ -389,7 +389,16 @@ app.post('/api/signin', (req, res, next) => {
       }
       bcrypt.compare(req.body.password, result.rows[0].password)
         .then(answer => {
-          res.json(answer);
+          if (answer) {
+            req.session.userId = result.rows[0].userId;
+            res.status(200).json({
+              message: 'logged in'
+            });
+          } else {
+            res.status(400).json({
+              error: 'invalid login'
+            });
+          }
         });
     });
 });
