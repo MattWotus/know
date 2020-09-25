@@ -357,6 +357,36 @@ app.get('/api/partners/:partnerId', (req, res, next) => {
     });
 });
 
+app.delete('/api/partners/:partnerId', (req, res, next) => {
+  const partnerId = parseFloat(req.params.partnerId);
+  if (!Number.isInteger(partnerId) || partnerId <= 0) {
+    return res.status(400).json({
+      error: 'partnerId must be a positive integer'
+    });
+  }
+  const sql = `
+    delete from "partners"
+    where "partnerId" = $1;
+  `;
+  const params = [partnerId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rowCount) {
+        res.status(404).json({
+          error: `Cannot find visit with partnerId ${partnerId}`
+        });
+      } else {
+        return res.sendStatus(204);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
+});
+
 function validSignup(user) {
   const validEmail = typeof user.email === 'string' && user.email.trim() !== '';
   const validPassword = typeof user.password === 'string' && user.password.trim() !== '';
