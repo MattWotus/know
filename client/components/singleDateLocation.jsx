@@ -2,7 +2,7 @@ import React from 'react';
 
 var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-function SingleVisitDateLocation(props) {
+function SingleDateLocation(props) {
   const date = props.data.date;
   const newDate = new Date(date);
   const year = newDate.getUTCFullYear();
@@ -27,4 +27,4 @@ function SingleVisitDateLocation(props) {
   );
 }
 
-export default SingleVisitDateLocation;
+export default SingleDateLocation;

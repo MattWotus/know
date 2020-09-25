@@ -1,5 +1,5 @@
 import React from 'react';
-import SingleVisitDateLocation from './singleVisitDateLocation'; // redundant use
+import SingleDateLocation from './singleDateLocation'; // redundant use
 import SinglePartnerList from './singlePartnerList';
 import Navbar from './navbar';
 import DeleteModal from './deleteModal';
@@ -49,10 +49,10 @@ class SinglePartner extends React.Component {
         <div className='row'>
           <div className='col-12 d-flex justify-content-between align-items-center mt-4'>
             <div onClick={() => this.props.setView('partners')} className="blueColor backFontSize backButton">&lt; Back</div>
-            <div><i onClick={this.deleteModalToggle} className="fas fa-ellipsis-h fa-3x visit-ellipsis"></i></div>
+            <div><i onClick={this.deleteModalToggle} className="fas fa-ellipsis-h fa-3x partner-ellipsis"></i></div>
           </div>
         </div>
-        <SingleVisitDateLocation data={this.state.partner} />
+        <SingleDateLocation data={this.state.partner} />
         <div className='row d-flex justify-content-center'>
           <div className='col-11'>
             <SinglePartnerList partners={this.state.partners} />

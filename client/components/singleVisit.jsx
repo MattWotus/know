@@ -1,5 +1,5 @@
 import React from 'react';
-import SingleVisitDateLocation from './singleVisitDateLocation';
+import SingleDateLocation from './singleDateLocation';
 import SingleVisitList from './singleVisitList';
 import Navbar from './navbar';
 import DeleteModal from './deleteModal';
@@ -52,7 +52,7 @@ class SingleVisit extends React.Component {
             <div><i onClick={this.deleteModalToggle} className="fas fa-ellipsis-h fa-3x visit-ellipsis"></i></div>
           </div>
         </div>
-        <SingleVisitDateLocation data={this.state.visit} />
+        <SingleDateLocation data={this.state.visit} />
         <div className='row d-flex justify-content-center'>
           <div className='col-11'>
             <SingleVisitList diseases={this.state.visit.diseases} />
