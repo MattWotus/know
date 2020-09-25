@@ -19,6 +19,7 @@ app.get('/api/health-check', (req, res, next) => {
     .then(result => res.json(result.rows[0]))
     .catch(err => next(err));
 });
+
 const userId = 5;
 
 app.get('/api/visits', (req, res, next) => {
@@ -317,6 +318,43 @@ app.post('/api/partners', (req, res, next) => {
       error: 'content is a required field'
     });
   }
+});
+
+app.get('/api/partners/:partnerId', (req, res, next) => {
+  const partnerId = parseFloat(req.params.partnerId);
+  if (!Number.isInteger(partnerId) || partnerId <= 0) {
+    return res.status(400).json({
+      error: 'partnerId must be a positive integer'
+    });
+  }
+  const sql = `
+    select
+      "partnerId",
+      "date",
+      "city",
+      "state",
+      "name",
+      "note"
+    from "partners"
+   where "partnerId" = $1;
+  `;
+  const params = [partnerId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rowCount) {
+        res.status(404).json({
+          error: `Cannot find visit with partnerId ${partnerId}`
+        });
+      } else {
+        return res.status(200).json(result.rows[0]);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
 });
 
 function validSignup(user) {
