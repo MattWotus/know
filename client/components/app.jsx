@@ -43,8 +43,9 @@ export default class App extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newVisit)
-    });
-    this.setState({ view: 'visits' });
+    })
+      .then(() => this.setState({ view: 'visits' }));
+
   }
 
   render() {

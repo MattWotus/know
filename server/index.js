@@ -125,18 +125,19 @@ app.post('/api/visits', (req, res, next) => {
       error: 'diseases=[{}] with at least one disease obj'
     });
   }
+  const diseaseArr = [];
   for (let i = 0; i < body.diseases.length; i++) {
     for (const prop in body.diseases[i]) {
-      if (body.diseases[i][prop] === 'N/A') {
-        body.diseases.splice(i, 1);
+      if (body.diseases[i][prop] !== 'N/A' && Object.keys(body.diseases[i]).length !== 0) {
+        diseaseArr.push(body.diseases[i]);
       }
     }
   }
   let valuesConcat = '';
-  for (let i = 0; i < body.diseases.length; i++) {
-    const diseaseName = Object.keys(body.diseases[i]).map(obj => [obj]);
+  for (let i = 0; i < diseaseArr.length; i++) {
+    const diseaseName = Object.keys(diseaseArr[i]).map(obj => [obj]);
     let result = '';
-    switch (body.diseases[i][diseaseName]) {
+    switch (diseaseArr[i][diseaseName]) {
       case 'Positive':
         result = true;
         break;
