@@ -1,27 +1,21 @@
 body {
-  max-width: 500px;
   height: 100vh;
   font-family: 'Raleway',
     sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #F8F8F8;
 }
 
 #root {
-  width: 100%;
   height: 100%;
   background-color: #F8F8F8;
 }
 
 #root>div {
-  width: 100%;
   height: 86vh;
   overflow-y: auto;
 }
 
 .container {
-  width: 100%;
   height: 100%;
 }
 
@@ -36,7 +30,7 @@ body {
 }
 
 #accountButtons {
-  width: 500px;
+  width: 100%;
   position: absolute;
   bottom: 0;
 }
@@ -53,11 +47,11 @@ body {
 #haveAccount {
   width: 100%;
   height: 6vh;
+  background-color: #F8F8F8;
   color: #62B3F5
 }
 
 #navbar {
-  width: 500px;
   height: 14vh;
   bottom: 0;
   background-color: rgb(255, 255, 255);
@@ -161,8 +155,7 @@ h3 {
   background-color: #E5E5E5;
 }
 
-#createAccount p,
-#signIn p {
+#createAccount p,  #signIn p {
   color: rgba(0, 0, 0, 0.5);
 }
 
@@ -176,13 +169,12 @@ settings-nav {
 }
 
 .dateLocation {
-  width: 300px;
   position: absolute;
   top: 0;
 }
 
 .deleteModalOverlay {
-  width: 500px;
+  width: 100%;
   height: 100vh;
   position: absolute;
   top: 0;
@@ -230,7 +222,7 @@ settings-nav {
 }
 
 .addModalOverlay {
-  width: 500px;
+  width: 100%;
   height: 100vh;
   position: absolute;
   top: 0;
