@@ -1,19 +1,20 @@
 import React from 'react';
-import SinglePartnerListItem from './singlePartnerListItem';
 
 function SinglePartnerList(props) {
-  if (props.partners === undefined) return null;
+  const pers = props.partner.name;
+
+  if (props.partner === undefined || Object.keys(props.partner).length === 0) return 'Loading...';
   return (
-    props.partnersP.map(pers => {
-      const propName = Object.keys(pers).map(prop => [prop]);
-      return (
-        <SinglePartnerListItem
-          key={propName}
-          id={pers.partnerId}
-          test={propName}
-          result={pers[propName]} />
-      );
-    })
+    <div className='partner d-flex justify-content-between align-items-center mt-4 mb-4'>
+      <div>
+        Name
+      </div>
+      <div>
+        <div>
+          {pers}
+        </div>
+      </div>
+    </div>
   );
 }
 

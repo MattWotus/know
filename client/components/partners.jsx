@@ -12,7 +12,7 @@ function Partners(props) {
     <div className="container active2">
       <div className='row d-flex justify-content-center pt-3'>
         <div className='col-11'>
-          <PartnerList />
+          <PartnerList selectPartner={props.selectPartner} />
         </div>
       </div>
       <div className='row'>

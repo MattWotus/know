@@ -1,5 +1,6 @@
 require('dotenv/config');
 const express = require('express');
+const bcrypt = require('bcrypt');
 
 const db = require('./database');
 const ClientError = require('./client-error');
@@ -18,6 +19,7 @@ app.get('/api/health-check', (req, res, next) => {
     .then(result => res.json(result.rows[0]))
     .catch(err => next(err));
 });
+
 const userId = 5;
 
 app.get('/api/visits', (req, res, next) => {
@@ -124,18 +126,19 @@ app.post('/api/visits', (req, res, next) => {
       error: 'diseases=[{}] with at least one disease obj'
     });
   }
+  const diseaseArr = [];
   for (let i = 0; i < body.diseases.length; i++) {
     for (const prop in body.diseases[i]) {
-      if (body.diseases[i][prop] === 'N/A') {
-        body.diseases.splice(i, 1);
+      if (body.diseases[i][prop] !== 'N/A' && Object.keys(body.diseases[i]).length !== 0) {
+        diseaseArr.push(body.diseases[i]);
       }
     }
   }
   let valuesConcat = '';
-  for (let i = 0; i < body.diseases.length; i++) {
-    const diseaseName = Object.keys(body.diseases[i]).map(obj => [obj]);
+  for (let i = 0; i < diseaseArr.length; i++) {
+    const diseaseName = Object.keys(diseaseArr[i]).map(obj => [obj]);
     let result = '';
-    switch (body.diseases[i][diseaseName]) {
+    switch (diseaseArr[i][diseaseName]) {
       case 'Positive':
         result = true;
         break;
@@ -315,6 +318,157 @@ app.post('/api/partners', (req, res, next) => {
       error: 'content is a required field'
     });
   }
+});
+
+app.get('/api/partners/:partnerId', (req, res, next) => {
+  const partnerId = parseFloat(req.params.partnerId);
+  if (!Number.isInteger(partnerId) || partnerId <= 0) {
+    return res.status(400).json({
+      error: 'partnerId must be a positive integer'
+    });
+  }
+  const sql = `
+    select
+      "partnerId",
+      "date",
+      "city",
+      "state",
+      "name",
+      "note"
+    from "partners"
+   where "partnerId" = $1;
+  `;
+  const params = [partnerId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rowCount) {
+        res.status(404).json({
+          error: `Cannot find visit with partnerId ${partnerId}`
+        });
+      } else {
+        return res.status(200).json(result.rows[0]);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
+});
+
+app.delete('/api/partners/:partnerId', (req, res, next) => {
+  const partnerId = parseFloat(req.params.partnerId);
+  if (!Number.isInteger(partnerId) || partnerId <= 0) {
+    return res.status(400).json({
+      error: 'partnerId must be a positive integer'
+    });
+  }
+  const sql = `
+    delete from "partners"
+    where "partnerId" = $1;
+  `;
+  const params = [partnerId];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rowCount) {
+        res.status(404).json({
+          error: `Cannot find visit with partnerId ${partnerId}`
+        });
+      } else {
+        return res.sendStatus(204);
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'An unexpected error occurred.'
+      });
+    });
+});
+
+function validSignup(user) {
+  const validEmail = typeof user.email === 'string' && user.email.trim() !== '';
+  const validPassword = typeof user.password === 'string' && user.password.trim() !== '';
+  const validFirstName = typeof user.firstName === 'string' && user.firstName.trim() !== '';
+  const validLastName = typeof user.lastName === 'string' && user.lastName.trim() !== '';
+  return validEmail && validPassword && validFirstName && validLastName;
+}
+function validSignin(user) {
+  const validEmail = typeof user.email === 'string' && user.email.trim() !== '';
+  const validPassword = typeof user.password === 'string' && user.password.trim() !== '';
+  return validEmail && validPassword;
+}
+
+app.post('/api/signup', (req, res, next) => {
+  if (!validSignup(req.body)) {
+    res.status(400).json({
+      error: 'invalid user'
+    });
+  }
+  const sql = `
+    select *
+      from "users"
+      where "email" = $1;
+  `;
+  const params = [req.body.email];
+  db.query(sql, params)
+    .then(result => {
+      if (result.rows[0]) {
+        res.status(400).json({
+          error: 'email in use'
+        });
+      }
+    });
+  bcrypt.hash(req.body.password, 10)
+    .then(hash => {
+      const sql = `
+          insert into "users" ("firstName", "lastName",  "email", "password")
+            values ($1, $2, $3, $4)
+            returning "userId";
+        `;
+      const params = [req.body.firstName, req.body.lastName, req.body.email, hash];
+      return db.query(sql, params);
+    })
+    .then(result => {
+      req.session.userId = result.rows[0].userId;
+      res.status(201).json(result.rows[0]);
+    });
+});
+
+app.post('/api/signin', (req, res, next) => {
+  if (!validSignin(req.body)) {
+    res.status(400).json({
+      error: 'invalid user'
+    });
+  }
+  const sql = `
+    select *
+      from "users"
+      where "email" = $1;
+  `;
+  const params = [req.body.email];
+  db.query(sql, params)
+    .then(result => {
+      if (!result.rows[0]) {
+        res.status(400).json({
+          error: 'invalid login'
+        });
+      }
+      bcrypt.compare(req.body.password, result.rows[0].password)
+        .then(answer => {
+          if (answer) {
+            req.session.userId = result.rows[0].userId;
+            res.status(200).json({
+              message: 'logged in'
+            });
+          } else {
+            res.status(400).json({
+              error: 'invalid login'
+            });
+          }
+        });
+    });
 });
 
 app.use('/api', (req, res, next) => {

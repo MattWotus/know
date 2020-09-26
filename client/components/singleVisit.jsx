@@ -45,14 +45,14 @@ class SingleVisit extends React.Component {
       addModal = <AddModal addModalToggle={this.props.addModalToggle} setView={this.props.setView} />;
     }
     return (
-      <div className="container mb-5">
+      <div className="container mb-5 active1">
         <div className='row'>
           <div className='col-12 d-flex justify-content-between align-items-center mt-4'>
             <div onClick={() => this.props.setView('visits')} className="blueColor backFontSize backButton">&lt; Back</div>
+            <SingleDateLocation data={this.state.visit} />
             <div><i onClick={this.deleteModalToggle} className="fas fa-ellipsis-h fa-3x visit-ellipsis"></i></div>
           </div>
         </div>
-        <SingleDateLocation data={this.state.visit} />
         <div className='row d-flex justify-content-center'>
           <div className='col-11'>
             <SingleVisitList diseases={this.state.visit.diseases} />

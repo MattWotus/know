@@ -15,11 +15,13 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addVisit = this.addVisit.bind(this);
     this.selectVisit = this.selectVisit.bind(this);
+    this.selectPartner = this.selectPartner.bind(this);
     this.addModalToggle = this.addModalToggle.bind(this);
     this.state = {
       view: 'welcome',
       visitId: null,
-      addModal: false
+      addModal: false,
+      partnerId: null
     };
   }
 
@@ -76,7 +78,7 @@ export default class App extends React.Component {
       );
     } else if (this.state.view === 'partners') {
       return (
-        <Partners addModal={this.state.addModal} addModalToggle={this.addModalToggle} setView={this.setView} />
+        <Partners addModal={this.state.addModal} selectPartner={this.selectPartner} addModalToggle={this.addModalToggle} setView={this.setView} />
       );
     } else if (this.state.view === 'singlePartner') {
       return (
