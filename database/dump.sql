@@ -266,7 +266,6 @@ COPY public.diseases ("diseaseId", name, description) FROM stdin;
 --
 
 COPY public.partners ("partnerId", "userId", date, city, state, name, note, "createdAt") FROM stdin;
-12	5	2020-08-26	Los Angeles	CA	Uzair	\N	2020-09-27 17:23:13.712909+00
 \.
 
 
@@ -284,9 +283,6 @@ COPY public.users ("userId", "firstName", "lastName", email, password, "createdA
 --
 
 COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM stdin;
-18	1	f	2020-09-27 17:22:50.894493+00
-18	2	f	2020-09-27 17:22:50.894493+00
-18	5	f	2020-09-27 17:22:50.894493+00
 \.
 
 
@@ -295,7 +291,6 @@ COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM st
 --
 
 COPY public.visits ("visitId", "userId", date, city, state, "createdAt") FROM stdin;
-18	5	2020-09-03	Chicago	IL	2020-09-27 17:22:50.894493+00
 \.
 
 
