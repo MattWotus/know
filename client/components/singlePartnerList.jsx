@@ -5,9 +5,9 @@ function SinglePartnerList(props) {
 
   if (props.partner === undefined || Object.keys(props.partner).length === 0) return 'Loading...';
   return (
-    <div className='partner d-flex justify-content-between align-items-center mt-4 mb-4'>
+    <div className='singlePartner d-flex justify-content-between align-items-center mt-4 mb-4'>
       <div>
-        Name
+        Partner Name
       </div>
       <div>
         <div>

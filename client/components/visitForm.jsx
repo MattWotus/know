@@ -101,6 +101,9 @@ class VisitForm extends React.Component {
     const dateWidth = {
       maxWidth: '60%'
     };
+    const locationWidth = {
+      maxWidth: '60%'
+    };
     const cityWidth = {
       maxWidth: '65%'
     };
@@ -111,7 +114,7 @@ class VisitForm extends React.Component {
       maxWidth: '30%'
     };
     return (
-      <div className="container">
+      <div className="container stop">
         <div className="row">
           <form id="visitForm" onSubmit={this.handleSubmit} onReset={this.handleReset} className="col-12">
             <div className="row" style={header}>
@@ -128,7 +131,7 @@ class VisitForm extends React.Component {
             </div>
             <div className="input-group d-flex align-items-center justify-content-between border-bottom pt-3 pb-3">
               <label htmlFor="location" className="mb-0"><h5 className="mb-0">Location</h5></label>
-              <div className="d-flex">
+              <div className="d-flex" style={locationWidth}>
                 <input type="text" id="location" className="form-control mr-2" name="city" placeholder="City" style={cityWidth} value={city} onChange={this.handleChange} />
                 <select className="form-control" name="state" aria-label="location"
                   aria-describedby="basic-addon1" style={stateWidth} value={state} onChange={this.handleChange}>
