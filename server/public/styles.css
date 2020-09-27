@@ -3,6 +3,7 @@ body {
   font-family: 'Raleway',
     sans-serif;
   background-color: #F8F8F8;
+  overflow: hidden;
 }
 
 #root {
@@ -10,7 +11,7 @@ body {
   background-color: #F8F8F8;
 }
 
-#root>div {
+#root > div:not(.stop) {
   height: 86vh;
   overflow-y: auto;
 }
@@ -19,10 +20,23 @@ body {
   height: 100%;
 }
 
+.relativee {
+  position: relative;
+}
+
 .col-10,
 .col-11 {
   padding-left: 0;
   padding-right: 0;
+}
+
+#homeLogo,
+#innerLogo,
+#navbar,
+.blueColor,
+.deleteModalContent *,
+.addModalContent {
+  user-select: none;
 }
 
 #homeLogo {
@@ -65,10 +79,6 @@ body {
   margin-bottom: 0;
 }
 
-#navbar i {
-  cursor: pointer;
-}
-
 h1,
 h2,
 h3 {
@@ -85,40 +95,9 @@ h3 {
   max-width: 80%;
 }
 
-.visit {
-  width: 100%;
-  height: 10vh;
-  padding-left: 20px;
-  padding-right: 20px;
-  border: 1px solid black;
-  border-radius: 25px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 2px 2px 8px #888888;
-  cursor: pointer;
-}
-
-.partner {
-  width: 100%;
-  height: 10vh;
-  padding-left: 20px;
-  padding-right: 20px;
-  border: 1px solid black;
-  border-radius: 25px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 2px 2px 8px #888888;
-}
-
-.testResult {
-  width: 100%;
-  height: 10vh;
-  padding-left: 20px;
-  padding-right: 20px;
-  border: 1px solid black;
-  border-radius: 25px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 2px 2px 8px #888888;
-}
-
+.visit,
+.partner,
+.testResult,
 .settings {
   width: 100%;
   height: 10vh;
@@ -128,7 +107,6 @@ h3 {
   border-radius: 25px;
   background-color: rgb(255, 255, 255);
   box-shadow: 2px 2px 8px #888888;
-  cursor: pointer;
 }
 
 .blueColor {
@@ -164,7 +142,14 @@ h3 {
 .partners-nav,
 add-nav,
 get-tested-nav,
-settings-nav {
+settings-nav,
+.cursor-pointer,
+#navbar i,
+.partner,
+.visit-ellipsis,
+.partner-ellipsis,
+.visit,
+.settings {
   cursor: pointer;
 }
 
@@ -197,10 +182,6 @@ settings-nav {
   border: 3px solid #F16A73;
 }
 
-.cursor-pointer {
-  cursor: pointer;
-}
-
 .deleteButtons {
   width: 60%;
 }
@@ -208,10 +189,6 @@ settings-nav {
 .addButtons {
   width: 100%;
   height: 100%;
-}
-
-.visit-ellipsis {
-  cursor: pointer;
 }
 
 #deleteYes,
@@ -239,11 +216,14 @@ settings-nav {
   bottom: 0;
   width: 75%;
   height: 30%;
-  margin-bottom: 4vh;
-  margin-right: 4%;
+  margin-bottom: 3.9vh;
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+
+#navbar > div {
+  width: calc(100% / 5);
 }
 
 #newTest,

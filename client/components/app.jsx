@@ -5,6 +5,7 @@ import Visits from './visits';
 import Partners from './partners';
 import VisitForm from './visitForm';
 import SingleVisit from './singleVisit';
+import SinglePartner from './singlePartner';
 import Settings from './settings';
 import PartnerForm from './partnerForm';
 import GetTested from './getTested';
@@ -15,11 +16,13 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.addVisit = this.addVisit.bind(this);
     this.selectVisit = this.selectVisit.bind(this);
+    this.selectPartner = this.selectPartner.bind(this);
     this.addModalToggle = this.addModalToggle.bind(this);
     this.state = {
       view: 'welcome',
       visitId: null,
-      addModal: false
+      addModal: false,
+      partnerId: null
     };
   }
 
@@ -34,6 +37,11 @@ export default class App extends React.Component {
   selectVisit(visitId) {
     this.setState({ visitId: visitId });
     this.setState({ view: 'singleVisit' });
+  }
+
+  selectPartner(partnerId) {
+    this.setState({ partnerId: partnerId });
+    this.setState({ view: 'singlePartner' });
   }
 
   addVisit(newVisit) {
@@ -72,7 +80,11 @@ export default class App extends React.Component {
       );
     } else if (this.state.view === 'partners') {
       return (
-        <Partners addModal={this.state.addModal} addModalToggle={this.addModalToggle} setView={this.setView} />
+        <Partners addModal={this.state.addModal} selectPartner={this.selectPartner} addModalToggle={this.addModalToggle} setView={this.setView} />
+      );
+    } else if (this.state.view === 'singlePartner') {
+      return (
+        <SinglePartner addModal={this.state.addModal} addModalToggle={this.addModalToggle} partnerId={this.state.partnerId} setView={this.setView} />
       );
     } else if (this.state.view === 'visitForm') {
       return (

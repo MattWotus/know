@@ -26,6 +26,7 @@ class PartnerList extends React.Component {
         this.state.partners.map(partner => {
           return (
             <PartnerListItem
+              selectPartner={this.props.selectPartner}
               key={partner.partnerId}
               id={partner.partnerId}
               date={partner.date}

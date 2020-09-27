@@ -2,7 +2,8 @@ import React from 'react';
 
 var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-function SingleVisitDateLocation(props) {
+function SingleDateLocation(props) {
+  if (props.data === undefined || Object.keys(props.data).length === 0) return 'Loading...';
   const date = props.data.date;
   const newDate = new Date(date);
   const year = newDate.getUTCFullYear();
@@ -17,7 +18,7 @@ function SingleVisitDateLocation(props) {
 
   return (
     <div className='row d-flex justify-content-center'>
-      <div className='col-6 d-flex flex-column align-items-center mt-4 dateLocation'>
+      <div className='col-6 d-flex flex-column align-items-center dateLocation'>
         <div>
           {formattedDate}
         </div>
@@ -29,4 +30,4 @@ function SingleVisitDateLocation(props) {
   );
 }
 
-export default SingleVisitDateLocation;
+export default SingleDateLocation;
