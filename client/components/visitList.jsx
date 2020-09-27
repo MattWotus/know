@@ -20,7 +20,13 @@ class VisitList extends React.Component {
 
   render() {
     if (this.state.visits.length === 0) {
-      return <h3 className="mt-3">No Visits Recorded</h3>;
+      return (
+        <div className="row d-flex justify-content-center">
+          <div className="col-11 text-center">
+            <h3 className="mt-3">No Visits Recorded</h3>
+          </div>
+        </div>
+      );
     } else {
       return (
         this.state.visits.map(visit => {

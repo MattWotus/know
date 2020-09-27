@@ -20,7 +20,13 @@ class PartnerList extends React.Component {
 
   render() {
     if (this.state.partners.length === 0) {
-      return <h3>No partners recorded</h3>;
+      return (
+        <div className="row d-flex justify-content-center">
+          <div className="col-11 text-center">
+            <h3>No Partners Recorded</h3>
+          </div>
+        </div>
+      );
     } else {
       return (
         this.state.partners.map(partner => {

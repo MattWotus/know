@@ -266,10 +266,6 @@ COPY public.diseases ("diseaseId", name, description) FROM stdin;
 --
 
 COPY public.partners ("partnerId", "userId", date, city, state, name, note, "createdAt") FROM stdin;
-1	5	2020-08-26	Los Angeles	CA	Uzair	\N	2020-09-24 17:56:50.295532+00
-4	5	2020-09-15	San Diego	CA	Scott	\N	2020-09-24 18:04:10.272287+00
-5	5	2020-07-03	San Jose	CA	Brett	\N	2020-09-24 18:06:02.139105+00
-6	5	2020-06-03	Venice	CA	Cody	\N	2020-09-24 18:33:21.645057+00
 \.
 
 
@@ -288,20 +284,6 @@ COPY public.users ("userId", "firstName", "lastName", email, password, "createdA
 --
 
 COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM stdin;
-3	1	t	2020-09-22 01:37:18.489142+00
-3	2	t	2020-09-22 01:37:18.489142+00
-3	3	t	2020-09-22 01:37:18.489142+00
-3	4	t	2020-09-22 01:37:18.489142+00
-3	5	t	2020-09-22 01:37:18.489142+00
-3	7	t	2020-09-22 01:37:18.489142+00
-3	7	t	2020-09-22 01:37:18.489142+00
-5	1	f	2020-09-22 02:10:52.302461+00
-5	2	f	2020-09-22 02:10:52.302461+00
-5	3	f	2020-09-22 02:10:52.302461+00
-5	4	f	2020-09-22 02:10:52.302461+00
-5	5	f	2020-09-22 02:10:52.302461+00
-5	6	f	2020-09-22 02:10:52.302461+00
-5	7	f	2020-09-22 02:10:52.302461+00
 \.
 
 
@@ -310,8 +292,6 @@ COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM st
 --
 
 COPY public.visits ("visitId", "userId", date, city, state, "createdAt") FROM stdin;
-3	5	2020-10-02	New York	NY	2020-09-22 01:34:33.38375+00
-5	6	2020-10-02	Irvine	CA	2020-09-22 02:09:01.438731+00
 \.
 
 
@@ -326,7 +306,7 @@ SELECT pg_catalog.setval('public."diseases_diseaseId_seq"', 7, true);
 -- Name: partners_partnerId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."partners_partnerId_seq"', 8, true);
+SELECT pg_catalog.setval('public."partners_partnerId_seq"', 11, true);
 
 
 --
@@ -340,7 +320,7 @@ SELECT pg_catalog.setval('public."users_userId_seq"', 6, true);
 -- Name: visits_visitId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."visits_visitId_seq"', 15, true);
+SELECT pg_catalog.setval('public."visits_visitId_seq"', 17, true);
 
 
 --

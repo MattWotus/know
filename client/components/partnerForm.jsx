@@ -60,16 +60,19 @@ class PartnerForm extends React.Component {
       color: 'rgb(255, 255, 255'
     };
     const dateWidth = {
-      maxWidth: '47%'
+      maxWidth: '60%'
+    };
+    const locationWidth = {
+      maxWidth: '60%'
     };
     const cityWidth = {
-      maxWidth: '56%'
+      maxWidth: '65%'
     };
     const stateWidth = {
-      maxWidth: '39%'
+      maxWidth: '45%'
     };
     const nameWidth = {
-      maxWidth: '45%'
+      maxWidth: '60%'
     };
     return (
       <div className="container">
@@ -89,7 +92,7 @@ class PartnerForm extends React.Component {
             </div>
             <div className="input-group d-flex align-items-center justify-content-between border-bottom pt-3 pb-3">
               <label htmlFor="location" className="mb-0"><h5 className="mb-0">Location</h5></label>
-              <div className="d-flex">
+              <div className="d-flex" style={locationWidth}>
                 <input type="text" id="location" className="form-control mr-2" name="city" placeholder="City" style={cityWidth} value={city} onChange={this.handleChange} />
                 <select className="form-control" name="state" aria-label="location"
                   aria-describedby="basic-addon1" style={stateWidth} value={state} onChange={this.handleChange}>
@@ -149,7 +152,7 @@ class PartnerForm extends React.Component {
             </div>
             <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-3">
               <label htmlFor="chlamydia" className="mb-0"><h5 className="mb-0">Name</h5></label>
-              <input type="text" id="name" className="form-control mr-2" name="name" placeholder="Name" style={nameWidth} value={name} onChange={this.handleChange} />
+              <input type="text" id="name" className="form-control" name="name" placeholder="Name" style={nameWidth} value={name} onChange={this.handleChange} />
             </div>
           </form>
         </div>
