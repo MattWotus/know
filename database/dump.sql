@@ -266,6 +266,7 @@ COPY public.diseases ("diseaseId", name, description) FROM stdin;
 --
 
 COPY public.partners ("partnerId", "userId", date, city, state, name, note, "createdAt") FROM stdin;
+12	5	2020-08-26	Los Angeles	CA	Uzair	\N	2020-09-27 17:23:13.712909+00
 \.
 
 
@@ -275,7 +276,6 @@ COPY public.partners ("partnerId", "userId", date, city, state, name, note, "cre
 
 COPY public.users ("userId", "firstName", "lastName", email, password, "createdAt") FROM stdin;
 5	Scott	Brett	scott@brett.com	password	2020-09-22 01:12:58.066098+00
-6	Matt	Ethan	tyler@devin.com	password	2020-09-22 01:33:44.681456+00
 \.
 
 
@@ -284,6 +284,9 @@ COPY public.users ("userId", "firstName", "lastName", email, password, "createdA
 --
 
 COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM stdin;
+18	1	f	2020-09-27 17:22:50.894493+00
+18	2	f	2020-09-27 17:22:50.894493+00
+18	5	f	2020-09-27 17:22:50.894493+00
 \.
 
 
@@ -292,6 +295,7 @@ COPY public."visitResults" ("visitId", "diseaseId", result, "createdAt") FROM st
 --
 
 COPY public.visits ("visitId", "userId", date, city, state, "createdAt") FROM stdin;
+18	5	2020-09-03	Chicago	IL	2020-09-27 17:22:50.894493+00
 \.
 
 
@@ -306,7 +310,7 @@ SELECT pg_catalog.setval('public."diseases_diseaseId_seq"', 7, true);
 -- Name: partners_partnerId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."partners_partnerId_seq"', 11, true);
+SELECT pg_catalog.setval('public."partners_partnerId_seq"', 12, true);
 
 
 --
@@ -320,7 +324,7 @@ SELECT pg_catalog.setval('public."users_userId_seq"', 6, true);
 -- Name: visits_visitId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."visits_visitId_seq"', 17, true);
+SELECT pg_catalog.setval('public."visits_visitId_seq"', 18, true);
 
 
 --
