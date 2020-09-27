@@ -8,6 +8,7 @@ import SingleVisit from './singleVisit';
 import SinglePartner from './singlePartner';
 import Settings from './settings';
 import PartnerForm from './partnerForm';
+import GetTested from './getTested';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -50,8 +51,9 @@ export default class App extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(newVisit)
-    });
-    this.setState({ view: 'visits' });
+    })
+      .then(() => this.setState({ view: 'visits' }));
+
   }
 
   render() {
@@ -91,6 +93,10 @@ export default class App extends React.Component {
     } else if (this.state.view === 'partnerForm') {
       return (
         <PartnerForm setView={this.setView} />
+      );
+    } else if (this.state.view === 'getTested') {
+      return (
+        <GetTested setView={this.setView} />
       );
     }
   }

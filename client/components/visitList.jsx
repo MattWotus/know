@@ -20,7 +20,7 @@ class VisitList extends React.Component {
 
   render() {
     if (this.state.visits.length === 0) {
-      return <h3>No visits recorded</h3>;
+      return <h3 className="mt-3">No Visits Recorded</h3>;
     } else {
       return (
         this.state.visits.map(visit => {

@@ -1,6 +1,5 @@
 require('dotenv/config');
 const express = require('express');
-const bcrypt = require('bcrypt');
 
 const db = require('./database');
 const ClientError = require('./client-error');
@@ -384,90 +383,6 @@ app.delete('/api/partners/:partnerId', (req, res, next) => {
       res.status(500).json({
         error: 'An unexpected error occurred.'
       });
-    });
-});
-
-function validSignup(user) {
-  const validEmail = typeof user.email === 'string' && user.email.trim() !== '';
-  const validPassword = typeof user.password === 'string' && user.password.trim() !== '';
-  const validFirstName = typeof user.firstName === 'string' && user.firstName.trim() !== '';
-  const validLastName = typeof user.lastName === 'string' && user.lastName.trim() !== '';
-  return validEmail && validPassword && validFirstName && validLastName;
-}
-function validSignin(user) {
-  const validEmail = typeof user.email === 'string' && user.email.trim() !== '';
-  const validPassword = typeof user.password === 'string' && user.password.trim() !== '';
-  return validEmail && validPassword;
-}
-
-app.post('/api/signup', (req, res, next) => {
-  if (!validSignup(req.body)) {
-    res.status(400).json({
-      error: 'invalid user'
-    });
-  }
-  const sql = `
-    select *
-      from "users"
-      where "email" = $1;
-  `;
-  const params = [req.body.email];
-  db.query(sql, params)
-    .then(result => {
-      if (result.rows[0]) {
-        res.status(400).json({
-          error: 'email in use'
-        });
-      }
-    });
-  bcrypt.hash(req.body.password, 10)
-    .then(hash => {
-      const sql = `
-          insert into "users" ("firstName", "lastName",  "email", "password")
-            values ($1, $2, $3, $4)
-            returning "userId";
-        `;
-      const params = [req.body.firstName, req.body.lastName, req.body.email, hash];
-      return db.query(sql, params);
-    })
-    .then(result => {
-      req.session.userId = result.rows[0].userId;
-      res.status(201).json(result.rows[0]);
-    });
-});
-
-app.post('/api/signin', (req, res, next) => {
-  if (!validSignin(req.body)) {
-    res.status(400).json({
-      error: 'invalid user'
-    });
-  }
-  const sql = `
-    select *
-      from "users"
-      where "email" = $1;
-  `;
-  const params = [req.body.email];
-  db.query(sql, params)
-    .then(result => {
-      if (!result.rows[0]) {
-        res.status(400).json({
-          error: 'invalid login'
-        });
-      }
-      bcrypt.compare(req.body.password, result.rows[0].password)
-        .then(answer => {
-          if (answer) {
-            req.session.userId = result.rows[0].userId;
-            res.status(200).json({
-              message: 'logged in'
-            });
-          } else {
-            res.status(400).json({
-              error: 'invalid login'
-            });
-          }
-        });
     });
 });
 

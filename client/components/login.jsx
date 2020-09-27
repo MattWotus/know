@@ -11,15 +11,14 @@ function Login(props) {
       </div>
       <div className="row d-flex justify-content-center text-center">
         <div className="col-10">
-          <form>
+          <form id="signinForm">
             <div className="form-group">
-              <input type="email" className="form-control" id="email" placeholder="Email" />
+              <input name="email" type="email" className="form-control" id="email" placeholder="Email" />
             </div>
             <div className="form-group">
-              <input type="password" className="form-control" id="password" placeholder="Password" />
+              <input name="password" type="password" className="form-control" id="password" placeholder="Password" />
             </div>
-            <button onClick={() => props.setView('visits')} type="submit" id="login" className="btn mt-3"><h5 className="mb-0">Login</h5></button>
-            <small id="passwordHelp" className="form-text text-muted mt-4"><p>Forgot Password</p></small>
+            <button onClick={() => props.setView('visits')} type="submit" id="login" className="btn mt-2"><h5 className="mb-0">Login</h5></button>
           </form>
         </div>
       </div>

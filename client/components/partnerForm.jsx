@@ -60,16 +60,16 @@ class PartnerForm extends React.Component {
       color: 'rgb(255, 255, 255'
     };
     const dateWidth = {
-      maxWidth: '47vw'
+      maxWidth: '47%'
     };
     const cityWidth = {
-      maxWidth: '26vw'
+      maxWidth: '56%'
     };
     const stateWidth = {
-      maxWidth: '19vw'
+      maxWidth: '39%'
     };
     const nameWidth = {
-      maxWidth: '45vw'
+      maxWidth: '45%'
     };
     return (
       <div className="container">

@@ -14,6 +14,8 @@ function SingleDateLocation(props) {
   const state = props.data.state;
   const location = city + ',' + ' ' + state;
 
+  if (date === undefined || location === undefined) return null;
+
   return (
     <div className='row d-flex justify-content-center'>
       <div className='col-6 d-flex flex-column align-items-center dateLocation'>

@@ -8,6 +8,7 @@ body {
 
 #root {
   height: 100%;
+  background-color: #F8F8F8;
 }
 
 #root > div:not(.stop) {
@@ -60,7 +61,7 @@ body {
 #haveAccount {
   width: 100%;
   height: 6vh;
-  background-color: rgb(255, 255, 255);
+  background-color: #F8F8F8;
   color: #62B3F5
 }
 
@@ -125,11 +126,14 @@ h3 {
 }
 
 #email,
-#password {
+#password,
+#firstName,
+#lastName,
+#confirmPassword {
   background-color: #E5E5E5;
 }
 
-#passwordHelp p {
+#createAccount p,  #signIn p {
   color: rgba(0, 0, 0, 0.5);
 }
 
@@ -234,7 +238,7 @@ settings-nav,
 
 .active1 .results-nav,
 .active2 .partners-nav,
-.active4 .tested-nav,
+.active4 .get-tested-nav,
 .active5 .settings-nav {
   color: #62B3F5;
 }

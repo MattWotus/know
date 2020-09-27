@@ -15,7 +15,7 @@ function Navbar(props) {
         <i className="fas fa-plus-circle fa-3x"></i>
         <p>Add</p>
       </div>
-      <div className="cursor-pointer d-flex flex-column align-items-center justify-content-center get-tested-nav">
+      <div onClick={() => props.setView('getTested')} className="cursor-pointer d-flex flex-column align-items-center justify-content-center get-tested-nav">
         <i className="fas fa-map-marked-alt fa-3x"></i>
         <p>Get Tested</p>
       </div>
