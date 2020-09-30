@@ -36,7 +36,7 @@ To try the application live:
 - User can add a partner.
 - User can search for places to get tested.
 
-## Features I worked on
+## Features I Worked On
 
 - User can view all visits, front-end.
 - User can view test results from individual visit, front-end.
