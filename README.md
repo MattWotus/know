@@ -47,10 +47,6 @@ To try the application live:
 - User can view all partners, back-end.
 - User can add a partner, back-end.
 
-## Preview
-
-![healthy-habitation](assets/healthy-habitation.gif)
-
 ## Development
 
 ### Getting Started
