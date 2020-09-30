@@ -39,10 +39,6 @@ body {
   user-select: none;
 }
 
-#homeLogo {
-  max-width: 80%;
-}
-
 #accountButtons {
   width: 100%;
   position: absolute;
@@ -88,10 +84,6 @@ h3 {
 .fa-ellipsis-h,
 .fa-minus-circle {
   color: #F16A73;
-}
-
-#innerLogo {
-  max-width: 80%;
 }
 
 .visit,
