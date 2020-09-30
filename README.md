@@ -47,6 +47,10 @@ To try the application live:
 - User can view all partners, back-end.
 - User can add a partner, back-end.
 
+## Preview
+
+![know](assets/know.gif)
+
 ## Development
 
 ### Getting Started
