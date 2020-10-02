@@ -61,7 +61,7 @@ body {
 }
 
 #navbar {
-  max-height: 500px;
+  max-width: 500px;
   height: 14vh;
   bottom: 0;
   background-color: rgb(255, 255, 255);
