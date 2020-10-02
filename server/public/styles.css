@@ -2,11 +2,11 @@ body {
   height: 100vh;
   font-family: 'Raleway',
     sans-serif;
-  background-color: #F8F8F8;
   overflow: hidden;
 }
 
 #root {
+  max-width: 500px;
   height: 100%;
   background-color: #F8F8F8;
 }
@@ -61,6 +61,7 @@ body {
 }
 
 #navbar {
+  max-height: 500px;
   height: 14vh;
   bottom: 0;
   background-color: rgb(255, 255, 255);
