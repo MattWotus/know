@@ -192,7 +192,7 @@ settings-nav,
 }
 
 .addModalOverlay {
-  width: 100%;
+  width: 500px;
   height: 100vh;
   position: absolute;
   top: 0;
@@ -207,7 +207,7 @@ settings-nav,
 .addModalContent {
   position: absolute;
   bottom: 0;
-  width: 75%;
+  width: 500px;
   height: 30%;
   margin-bottom: 3.9vh;
   display: flex;
