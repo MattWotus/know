@@ -1,5 +1,5 @@
 # know
-A full-stack Node.js and React application designed to help lower the rate of new HIV and STD diagnoses in the United States, allowing sexually-active people to have a central location to keep track of their sexual health, and specifically, HIV/STD test results.
+A full-stack React and Node.js application designed to help lower the rate of new HIV and STD diagnoses in the United States, allowing sexually-active people to have a central location to keep track of their sexual health, and specifically, HIV/STD test results.
 
 Note: This project was a group project, and the features mentioned make up the MVP of the project for the time given to create it. There are lots of opportunties for stretch features and improvements, and I look forward to continuing to work on the application.
 
