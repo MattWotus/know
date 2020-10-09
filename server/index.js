@@ -59,6 +59,7 @@ app.get('/api/visits/:visitId', (req, res, next) => {
       error: 'visitId must be a positive integer'
     });
   }
+  // line 75 may be superfluous. try deleting during testing.
   const sql = `
     select
       "visits"."visitId",
