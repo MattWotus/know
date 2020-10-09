@@ -10,17 +10,31 @@ class VisitForm extends React.Component {
       city: '',
       date: '',
       diseases: [
-        { chlamydia: null },
-        { gonorrhea: null },
-        { hepatitis: null },
-        { herpes: null },
-        { hiv: null },
-        { hpv: null },
-        { syphilis: null }
+        { chlamydia: '' },
+        { gonorrhea: '' },
+        { hepatitis: '' },
+        { herpes: '' },
+        { hiv: '' },
+        { hpv: '' },
+        { syphilis: '' }
       ],
       state: ''
     };
   }
+
+  // componentDidMount() {
+  //   this.setState({
+  //     diseases: [
+  //       { chlamydia: '' },
+  //       { gonorrhea: '' },
+  //       { hepatitis: '' },
+  //       { herpes: '' },
+  //       { hiv: '' },
+  //       { hpv: '' },
+  //       { syphilis: '' }
+  //     ]
+  //   });
+  // }
 
   handleChange(event) {
     const name = event.target.name;
@@ -49,13 +63,13 @@ class VisitForm extends React.Component {
       city: '',
       date: '',
       diseases: [
-        { chlamydia: null },
-        { gonorrhea: null },
-        { hepatitis: null },
-        { herpes: null },
-        { hiv: null },
-        { hpv: null },
-        { syphilis: null }
+        { chlamydia: '' },
+        { gonorrhea: '' },
+        { hepatitis: '' },
+        { herpes: '' },
+        { hiv: '' },
+        { hpv: '' },
+        { syphilis: '' }
       ],
       state: ''
     });
@@ -67,13 +81,13 @@ class VisitForm extends React.Component {
       city: '',
       date: '',
       diseases: [
-        { chlamydia: null },
-        { gonorrhea: null },
-        { hepatitis: null },
-        { herpes: null },
-        { hiv: null },
-        { hpv: null },
-        { syphilis: null }
+        { chlamydia: '' },
+        { gonorrhea: '' },
+        { hepatitis: '' },
+        { herpes: '' },
+        { hiv: '' },
+        { hpv: '' },
+        { syphilis: '' }
       ],
       state: ''
     });
@@ -84,7 +98,7 @@ class VisitForm extends React.Component {
     const city = this.state.city;
     const date = this.state.date;
     const diseases = [
-      { chlamydia: this.state.chlamydia },
+      { chlamydia: this.state.diseases[0].chlamydia },
       { gonorrhea: this.state.gonorrhea },
       { hepatitis: this.state.hepatitis },
       { herpes: this.state.herpes },
@@ -192,7 +206,7 @@ class VisitForm extends React.Component {
             <div className="input-group d-flex align-items-center justify-content-between pt-3 pb-2">
               <label htmlFor="chlamydia" className="mb-0"><h5 className="mb-0">Chlamydia</h5></label>
               <select id="chlamydia" className="form-control" name="chlamydia" aria-label="location"
-                aria-describedby="basic-addon1" style={resultWidth} value={diseases.chlamydia} onChange={this.handleChange}>
+                aria-describedby="basic-addon1" style={resultWidth} value={diseases[0].chlamydia} onChange={this.handleChange}>
                 <option defaultValue>Result</option>
                 <option>Positive</option>
                 <option>Negative</option>
@@ -202,7 +216,7 @@ class VisitForm extends React.Component {
             <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="gonorrhea" className="mb-0"><h5 className="mb-0">Gonorrhea</h5></label>
               <select id="gonorrhea" className="form-control" name="gonorrhea" aria-label="location"
-                aria-describedby="basic-addon1" style={resultWidth} value={diseases.gonorrhea} onChange={this.handleChange}>
+                aria-describedby="basic-addon1" style={resultWidth} value={diseases[1].gonorrhea} onChange={this.handleChange}>
                 <option defaultValue>Result</option>
                 <option>Positive</option>
                 <option>Negative</option>
@@ -212,7 +226,7 @@ class VisitForm extends React.Component {
             <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="hepatitis" className="mb-0"><h5 className="mb-0">Hepatitis</h5></label>
               <select id="hepatitis" className="form-control" name="hepatitis" aria-label="location"
-                aria-describedby="basic-addon1" style={resultWidth} value={diseases.hepatitis} onChange={this.handleChange}>
+                aria-describedby="basic-addon1" style={resultWidth} value={diseases[2].hepatitis} onChange={this.handleChange}>
                 <option defaultValue>Result</option>
                 <option>Positive</option>
                 <option>Negative</option>
@@ -222,7 +236,7 @@ class VisitForm extends React.Component {
             <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="herpes" className="mb-0"><h5 className="mb-0">Herpes</h5></label>
               <select id="herpes" className="form-control" name="herpes" aria-label="location"
-                aria-describedby="basic-addon1" style={resultWidth} value={diseases.herpes} onChange={this.handleChange}>
+                aria-describedby="basic-addon1" style={resultWidth} value={diseases[3].herpes} onChange={this.handleChange}>
                 <option defaultValue>Result</option>
                 <option>Positive</option>
                 <option>Negative</option>
@@ -232,7 +246,7 @@ class VisitForm extends React.Component {
             <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="HIV" className="mb-0"><h5 className="mb-0">HIV</h5></label>
               <select id="HIV" className="form-control" name="hiv" aria-label="location"
-                aria-describedby="basic-addon1" style={resultWidth} value={diseases.hiv} onChange={this.handleChange}>
+                aria-describedby="basic-addon1" style={resultWidth} value={diseases[4].hiv} onChange={this.handleChange}>
                 <option defaultValue>Result</option>
                 <option>Positive</option>
                 <option>Negative</option>
@@ -242,7 +256,7 @@ class VisitForm extends React.Component {
             <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="HPV" className="mb-0"><h5 className="mb-0">HPV</h5></label>
               <select id="HPV" className="form-control" name="hpv" aria-label="location"
-                aria-describedby="basic-addon1" style={resultWidth} value={diseases.hpv} onChange={this.handleChange}>
+                aria-describedby="basic-addon1" style={resultWidth} value={diseases[5].hpv} onChange={this.handleChange}>
                 <option defaultValue>Result</option>
                 <option>Positive</option>
                 <option>Negative</option>
@@ -252,7 +266,7 @@ class VisitForm extends React.Component {
             <div className="input-group d-flex align-items-center justify-content-between pt-2 pb-2">
               <label htmlFor="syphilis" className="mb-0"><h5 className="mb-0">Syphilis</h5></label>
               <select id="syphilis" className="form-control" name="syphilis" aria-label="location"
-                aria-describedby="basic-addon1" style={resultWidth} value={diseases.syphilis} onChange={this.handleChange}>
+                aria-describedby="basic-addon1" style={resultWidth} value={diseases[6].syphilis} onChange={this.handleChange}>
                 <option defaultValue>Result</option>
                 <option>Positive</option>
                 <option>Negative</option>
