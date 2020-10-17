@@ -50,15 +50,3 @@ To try the application live:
 ## Preview
 
 ![know](assets/know.gif)
-
-## Development
-
-### Getting Started
-
-1. Clone the repository.
-
-   ```
-   git clone https://github.com/MattWotus/know.git
-   ```
-   
-2. Open the folder in a code editor and open the index.html in default browser.
