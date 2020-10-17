@@ -7,7 +7,7 @@ My Role: Team Lead, Front-End Lead, Full-Stack Developer
 
 ## Technologies Used
 
-- React.js
+- React
 - Node.js
 - Express.js
 - PostgreSQL
